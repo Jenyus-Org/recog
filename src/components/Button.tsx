@@ -2,11 +2,13 @@ import clsx from "clsx";
 import React from "react";
 
 interface ButtonProps {
+  icon?: React.ReactNode;
   pill?: boolean;
   color?: "indigo" | "blue";
 }
 
 const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
+  icon,
   children,
   pill = false,
   color = "blue",
@@ -24,6 +26,8 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
         "font-medium",
         `bg-${color}-600`,
         `hover:bg-${color}-700`,
+        "flex",
+        "items-center",
         {
           "rounded-full": pill,
           "rounded-md": !pill,
@@ -31,6 +35,7 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
       ])}
       aria-haspopup="true"
       {...props}>
+      {icon && <span className="mr-2">{icon}</span>}
       {children}
     </button>
   );
