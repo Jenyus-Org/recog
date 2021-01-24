@@ -47,12 +47,6 @@ export default function Home() {
             </p>
           </a>
         </div>
-
-        <Button>Regular Button</Button>
-        <br/>
-        <Button pill color="indigo">
-          Pill Button
-        </Button>
       </main>
 
       <footer className={styles.footer}>
