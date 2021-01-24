@@ -6,15 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint \"*/**/*.ts\" --fix"
+    "lint": "eslint \"{pages,components}/**/*.{js,,jsx,ts,tsx}\" --fix"
   },
   "dependencies": {
-    "autoprefixer": "^10.2.3",
     "next": "10.0.5",
-    "postcss": "^8.2.4",
     "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "tailwindcss": "^2.0.2"
+    "react-dom": "17.0.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.22",
