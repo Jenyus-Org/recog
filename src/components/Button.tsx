@@ -35,7 +35,6 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
         },
         className,
       ])}
-      aria-haspopup="true"
       {...props}>
       {icon && <span className="mr-2">{icon}</span>}
       {children}
