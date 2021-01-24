@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint \"*/**/*.ts\" --fix"
+    "lint": "eslint \"{pages,components}/**/*.{js,,jsx,ts,tsx}\" --fix"
   },
   "dependencies": {
     "next": "10.0.5",
