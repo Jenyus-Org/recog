@@ -12,6 +12,7 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
   children,
   pill = false,
   color = "blue",
+  className,
   ...props
 }) => {
   return (
@@ -32,6 +33,7 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
           "rounded-full": pill,
           "rounded-md": !pill,
         },
+        className,
       ])}
       aria-haspopup="true"
       {...props}>
