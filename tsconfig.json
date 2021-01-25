@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["./src/components/*"],
+      "@ui/*": ["./src/ui/*"],
       "@api/*": ["./src/api/*"],
       "@models/*": ["./src/models/*"],
       "@screens/*": ["./src/screens/*"],
