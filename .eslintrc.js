@@ -19,7 +19,7 @@ module.exports = {
     "react/jsx-filename-extension": [1, { extensions: [".ts", ".tsx"] }],
     "import/extensions": "off",
     "react/prop-types": "off",
-    "react/jsx-props-no-spreading": ["error", { custom: "ignore" }],
+    "react/jsx-props-no-spreading": "off",
     "react/no-unescaped-entities": "off",
     "import/no-cycle": [0, { ignoreExternal: true }],
     "prefer-const": "off",
