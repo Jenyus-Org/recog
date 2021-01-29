@@ -20,32 +20,34 @@ export const Form = React.forwardRef<HTMLFormElement, FormProps>(
 );
 
 interface FormInputProps extends CustomComponentProps<HTMLInputElement> {
+  fill?: colorVariant;
   variant?: colorVariant;
-  outline?: colorVariant;
   pill?: boolean;
 }
 
 export const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
-  ({ variant = "default", outline = "default", pill, className, ...props }) => (
+  ({ fill = "default", variant = "default", pill, className, ...props }) => (
     <input
       className={clsx([
         "py-2",
         "px-4",
         "text-white",
-        "outline-none",
+        "focus:outline-none",
         {
-          "text-gray-500": variant === "default" || variant === "light-gray",
-          "bg-gray-300": variant === "light-gray",
-          "border-b": variant === "default",
-          "border-gray-300": outline === "default" || outline === "light-gray",
-          "border-primary": outline === "primary",
-          "border-secondary": outline === "secondary",
-          "border-gray-400": outline === "gray",
-          rounded: variant !== "default",
+          "placeholder-gray-200": fill !== "default" && fill !== "light-gray",
+          "placeholder-gray-400": fill === "light-gray",
+          "text-gray-500": fill === "default" || fill === "light-gray",
+          "bg-gray-300": fill === "light-gray",
+          "border-b": fill === "default",
+          "border-gray-300": variant === "default" || variant === "light-gray",
+          "border-primary": variant === "primary",
+          "border-secondary": variant === "secondary",
+          "border-gray-400": variant === "gray",
+          rounded: fill !== "default",
           "rounded-full": !!pill,
-          "bg-primary": variant === "primary",
-          "bg-secondary": variant === "secondary",
-          "bg-gray-400": variant === "gray",
+          "bg-primary": fill === "primary",
+          "bg-secondary": fill === "secondary",
+          "bg-gray-400": fill === "gray",
         },
         className,
       ])}
