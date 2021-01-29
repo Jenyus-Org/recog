@@ -13,6 +13,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         "w-full",
         "flex",
         "flex-wrap",
+        "content-between",
         "rounded-md",
         "p-4",
         {
