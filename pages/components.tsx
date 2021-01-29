@@ -60,6 +60,26 @@ export default function Components() {
           Share
         </Button>
       </div>
+      <div className="flex flex-wrap mt-4">
+        <Button pill outline variant="transparent" className="mr-2">
+          Share
+        </Button>
+        <Button pill outline className="mr-2">
+          Share
+        </Button>
+        <Button pill outline variant="primary" className="mr-2">
+          Share
+        </Button>
+        <Button pill outline variant="secondary" className="mr-2">
+          Share
+        </Button>
+        <Button pill outline variant="gray" className="mr-2">
+          Share
+        </Button>
+        <Button pill outline variant="light-gray">
+          Share
+        </Button>
+      </div>
       <br />
       <h2 className="text-2xl">Cards</h2>
       <br />
