@@ -5,7 +5,7 @@ import { CustomComponentProps, colorVariant } from "./helpers";
 interface ButtonProps extends CustomComponentProps<HTMLButtonElement> {
   icon?: React.ReactNode;
   pill?: boolean;
-  variant?: colorVariant;
+  variant?: colorVariant | "transparent";
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -25,9 +25,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         "font-medium",
         "flex",
         "items-center",
+        "focus:outline-none",
         {
           "border-gray-300": variant === "default",
-          "text-gray-500": variant === "default" || variant === "light-gray",
+          "text-gray-500":
+            variant === "transparent" ||
+            variant === "default" ||
+            variant === "light-gray",
           "bg-gray-300": variant === "light-gray",
           "hover:bg-gray-400": variant === "light-gray",
           "hover:bg-gray-200": variant === "default",
@@ -38,7 +42,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           "bg-gray-400": variant === "gray",
           "hover:bg-gray-500": variant === "gray",
           "rounded-full": !!pill,
-          "focus:outline-none": !!pill,
           "rounded-md": !pill,
         },
       ])}
