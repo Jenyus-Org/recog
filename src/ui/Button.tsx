@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import React from "react";
-import { variant } from "./variant";
+import { CustomComponentProps, variant } from "./helpers";
 
-interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
+interface ButtonProps extends CustomComponentProps<HTMLButtonElement> {
   icon?: React.ReactNode;
   pill?: boolean;
   variant?: variant;
@@ -15,6 +15,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => (
     <button
       className={clsx([
+        className,
         "px-4",
         "py-2",
         "border",
@@ -30,7 +31,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           "rounded-full": pill,
           "rounded-md": !pill,
         },
-        className,
       ])}
       {...props}
       ref={ref}>
