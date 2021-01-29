@@ -32,7 +32,7 @@ interface CardBodyProps extends CustomComponentProps<HTMLDivElement> {}
 
 export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(
   ({ children, className, ...props }) => (
-    <div className={clsx(["flex-6", className])} {...props}>
+    <div className={clsx(["flex-1", className])} {...props}>
       {children}
     </div>
   ),
@@ -63,7 +63,7 @@ interface CardSidebarProps extends CustomComponentProps<HTMLDivElement> {}
 
 export const CardSidebar = React.forwardRef<HTMLDivElement, CardSidebarProps>(
   ({ children, className, ...props }) => (
-    <div className={clsx(["mr-4", "flex-1", className])} {...props}>
+    <div className={clsx(["mr-4", "px-4", className])} {...props}>
       {children}
     </div>
   ),
