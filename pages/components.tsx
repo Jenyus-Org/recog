@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardSidebar,
 } from "@ui/Card";
+import { Dropdown } from "@ui/Dropdown";
 import { Form, FormInput } from "@ui/Form";
 import {
   HiOutlineArrowCircleDown,
@@ -94,6 +95,18 @@ export default function Components() {
           </CardBody>
           <CardFooter>Footer</CardFooter>
         </Card>
+      </div>
+      <br />
+      <h2 className="text-2xl">Dropdowns</h2>
+      <br />
+      <div className="flex flex-wrap">
+        <Dropdown className="mr-2" />
+        <Dropdown pill variant="transparent" className="mr-2" />
+        <Dropdown pill className="mr-2" />
+        <Dropdown pill variant="primary" className="mr-2" />
+        <Dropdown pill variant="secondary" className="mr-2" />
+        <Dropdown pill variant="gray" className="mr-2" />
+        <Dropdown pill variant="light-gray" />
       </div>
       <br />
       <h2 className="text-2xl">Forms</h2>
