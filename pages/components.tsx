@@ -1,3 +1,4 @@
+import { Code } from "@components/Code";
 import { Button } from "@ui/Button";
 import {
   Card,
@@ -81,6 +82,15 @@ export default function Components() {
         </Button>
       </div>
       <br />
+      <h3 className="text-xl mb-1">Code</h3>
+      <Code>
+        {`
+        <Button pill outline variant="light-gray">
+          Share
+        </Button>
+        `}
+      </Code>
+      <br />
       <h2 className="text-2xl">Cards</h2>
       <br />
       <div className="grid grid-cols-2 gap-4">
@@ -117,6 +127,27 @@ export default function Components() {
         </Card>
       </div>
       <br />
+      <h3 className="text-xl mb-1">Code</h3>
+      <Code>
+        {`
+        <Card>
+          <CardSidebar>
+            <!-- Sidebar content -->
+          </CardSidebar>
+          <CardBody>
+            <CardHeader>
+              <!-- Header content -->
+            </CardHeader>
+            <CardContent>
+              <!-- Main content -->
+            </CardContent>
+          </CardBody>
+          <CardFooter>
+            <!-- Footer content -->
+          </CardFooter>
+        </Card>`}
+      </Code>
+      <br />
       <h2 className="text-2xl">Dropdowns</h2>
       <br />
       <div className="flex flex-wrap">
@@ -128,6 +159,9 @@ export default function Components() {
         <Dropdown pill variant="gray" className="mr-2" />
         <Dropdown pill variant="light-gray" />
       </div>
+      <br />
+      <h3 className="text-xl mb-1">Code</h3>
+      <Code>{`<Dropdown pill variant="light-gray" />`}</Code>
       <br />
       <h2 className="text-2xl">Forms</h2>
       <br />
@@ -186,6 +220,17 @@ export default function Components() {
                 />
               </div>
             </Form>
+            <br />
+            <h3 className="text-xl mb-1">Code</h3>
+            <Code>
+              {`
+              <FormInput
+                placeholder="Placeholder..."
+                fill="light-gray"
+                pill
+              />
+              `}
+            </Code>
           </CardContent>
         </CardBody>
       </Card>

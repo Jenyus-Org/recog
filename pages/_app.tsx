@@ -1,3 +1,4 @@
+import "highlight.js/styles/atelier-cave-dark.css";
 import { AppProps } from "next/app";
 import "../styles/globals.css";
 
