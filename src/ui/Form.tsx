@@ -28,7 +28,7 @@ interface FormInputProps extends CustomComponentProps<HTMLInputElement> {
 export const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
   ({ fill = "default", variant = "default", pill, className, ...props }) => (
     <input
-      className={clsx([
+      className={clsx(
         "py-2",
         "px-4",
         "text-white",
@@ -50,7 +50,7 @@ export const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
           "bg-gray-400": fill === "gray",
         },
         className,
-      ])}
+      )}
       {...props}
     />
   ),
