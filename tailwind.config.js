@@ -11,6 +11,14 @@ module.exports = {
       fontFamily: {
         sans: ["Oxygen", ...defaultTheme.fontFamily.sans],
       },
+      flex: {
+        full: "0 0 100%",
+        2: "2 2 0%",
+        3: "3 3 0%",
+        4: "4 4 0%",
+        5: "5 5 0%",
+        6: "6 6 0%",
+      },
       colors: {
         primary: {
           light: "#AAAAEB",
