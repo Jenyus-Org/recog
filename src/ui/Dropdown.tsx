@@ -59,6 +59,7 @@ export const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
                 variant === "transparent" ||
                 variant === "default" ||
                 variant === "light-gray",
+              "bg-white": variant === "transparent" || variant === "default",
               "bg-gray-300": variant === "light-gray",
               "hover:bg-gray-400": variant === "light-gray",
               "hover:bg-gray-200": variant === "default",
