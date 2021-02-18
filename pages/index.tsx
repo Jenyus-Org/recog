@@ -5,7 +5,23 @@ import clsx from "clsx";
 import { Post } from "@components/Post";
 
 export default function Home() {
-  const posts = [{ title: "Title", body: "Post" }];
+  const posts = [
+    { title: "Title", body: "Post" },
+    { title: "Title", body: "Post" },
+    { title: "Title", body: "Post" },
+    { title: "Title", body: "Post" },
+    { title: "Title", body: "Post" },
+    { title: "Title", body: "Post" },
+    { title: "Title", body: "Post" },
+    { title: "Title", body: "Post" },
+    { title: "Title", body: "Post" },
+    { title: "Title", body: "Post" },
+    { title: "Title", body: "Post" },
+    { title: "Title", body: "Post" },
+    { title: "Title", body: "Post" },
+    { title: "Title", body: "Post" },
+  ];
+
   return (
     <div>
       <Layout>
