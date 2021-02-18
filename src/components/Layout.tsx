@@ -78,7 +78,7 @@ export const Layout = ({ children }: LayoutProps) => (
               variant="primary"
               className={clsx(
                 "mb-4",
-                "text-xl",
+                "text-lg",
                 "px-6",
                 "py-3",
                 "uppercase",
@@ -94,7 +94,7 @@ export const Layout = ({ children }: LayoutProps) => (
               elevate
               variant="secondary"
               className={clsx(
-                "text-xl",
+                "text-lg",
                 "px-6",
                 "py-3",
                 "uppercase",
@@ -120,8 +120,8 @@ export const Layout = ({ children }: LayoutProps) => (
                     "hover:bg-gray-200",
                     "font-comfortaa",
                   )}>
-                  <GoCommentDiscussion className={clsx("text-5xl", "mr-8")} />
-                  <span className={clsx("text-2xl")}>Forum</span>
+                  <GoCommentDiscussion className={clsx("text-4xl", "mr-8")} />
+                  <span className={clsx("text-xl")}>Forum</span>
                 </a>
               </Link>
             </li>
@@ -136,8 +136,8 @@ export const Layout = ({ children }: LayoutProps) => (
                     "hover:bg-gray-200",
                     "font-comfortaa",
                   )}>
-                  <BiNotepad className={clsx("text-5xl", "mr-8")} />
-                  <span className={clsx("text-2xl")}>Tutorials</span>
+                  <BiNotepad className={clsx("text-4xl", "mr-8")} />
+                  <span className={clsx("text-xl")}>Tutorials</span>
                 </a>
               </Link>
             </li>
@@ -152,8 +152,8 @@ export const Layout = ({ children }: LayoutProps) => (
                     "hover:bg-gray-200",
                     "font-comfortaa",
                   )}>
-                  <BiBriefcase className={clsx("text-5xl", "mr-8")} />
-                  <span className={clsx("text-2xl")}>Jobs</span>
+                  <BiBriefcase className={clsx("text-4xl", "mr-8")} />
+                  <span className={clsx("text-xl")}>Jobs</span>
                 </a>
               </Link>
             </li>
@@ -169,8 +169,8 @@ export const Layout = ({ children }: LayoutProps) => (
                     "hover:bg-gray-200",
                     "font-comfortaa",
                   )}>
-                  <FiSettings className={clsx("text-5xl", "mr-8")} />
-                  <span className={clsx("text-2xl")}>Settings</span>
+                  <FiSettings className={clsx("text-4xl", "mr-8")} />
+                  <span className={clsx("text-xl")}>Settings</span>
                 </a>
               </Link>
             </li>
