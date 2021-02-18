@@ -1,8 +1,8 @@
 import { Layout } from "@components/Layout";
-import { Dropdown } from "@ui/Dropdown";
-import { BiStats } from "react-icons/bi";
-import clsx from "clsx";
 import { Post } from "@components/Post";
+import { Dropdown } from "@ui/Dropdown";
+import clsx from "clsx";
+import { BiStats } from "react-icons/bi";
 
 export default function Home() {
   const posts = [
@@ -29,14 +29,14 @@ export default function Home() {
           <div className={clsx("flex", "items-center", "mx-6")}>
             <span>Sort</span>
             <BiStats className={clsx("mx-3", "text-3xl")} />
-            <Dropdown variant="light-gray" />
+            <Dropdown variant="light-gray" label="Sort" />
           </div>
-          <div className={clsx("flex", "items-center", "mx-6")}>
+          <div className={clsx("flex", "items-center")}>
             <span className={clsx("px-3")}>Flair</span>
-            <Dropdown variant="light-gray" />
+            <Dropdown variant="light-gray" label="Flair" />
           </div>
         </div>
-        <div className={clsx("mx-3") }>
+        <div className={clsx("ml-4", "mr-6", "grid", "gap-4")}>
           {posts.map((post, index) => (
             <Post post={post} key={index} />
           ))}
