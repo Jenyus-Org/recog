@@ -79,7 +79,7 @@ export const Sidenav = () => (
             variant="primary"
             className={clsx(
               "mb-4",
-              "text-lg",
+              "text-md",
               "px-6",
               "py-3",
               "uppercase",
@@ -95,7 +95,7 @@ export const Sidenav = () => (
             elevate
             variant="secondary"
             className={clsx(
-              "text-lg",
+              "text-md",
               "px-6",
               "py-3",
               "uppercase",
