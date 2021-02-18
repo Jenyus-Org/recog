@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import React from "react";
-import { CustomComponentProps, colorVariant } from "./helpers";
 import { BsChevronDown } from "react-icons/bs";
 import { Button, ButtonProps } from "./Button";
 
