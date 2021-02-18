@@ -1,10 +1,15 @@
 import { Button } from "@ui/Button";
+import { FormInput } from "@ui/Form";
 import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
 import { BiBriefcase, BiNotepad } from "react-icons/bi";
+import { BsBellFill, BsFillPersonFill } from "react-icons/bs";
+import { CgProfile } from "react-icons/cg";
 import { FiSettings } from "react-icons/fi";
 import { GoCommentDiscussion } from "react-icons/go";
+import { HiOutlineChatAlt } from "react-icons/hi";
+import { IoMdLogOut } from "react-icons/io";
 
 export const Sidenav = () => (
   <div
@@ -27,6 +32,18 @@ export const Sidenav = () => (
           <span className="text-secondary">cog</span>
         </a>
       </Link>
+      <div className={clsx("flex", "items-center", "ml-auto")}>
+        <Link href="/chat">
+          <a>
+            <HiOutlineChatAlt className={clsx("text-3xl", "mr-2")} />
+          </a>
+        </Link>
+        <Link href="/notifications">
+          <a>
+            <BsBellFill className={clsx("text-3xl", "mr-2")} />
+          </a>
+        </Link>
+      </div>
     </div>
     <div
       className={clsx(
@@ -46,10 +63,16 @@ export const Sidenav = () => (
           "w-full",
           "items-center",
         )}>
-        <p className={clsx("font-bold", "mb-10", "text-center")}>
-          Contribute to the Community!
-        </p>
         <div className={clsx("flex", "flex-col")}>
+          <FormInput
+            pill
+            fill="light-gray"
+            placeholder="Search..."
+            className={clsx("mb-8", "w-full")}
+          />
+          <p className={clsx("font-bold", "mb-10", "text-center")}>
+            Contribute to the Community!
+          </p>
           <Button
             pill
             elevate
@@ -136,6 +159,21 @@ export const Sidenav = () => (
             </Link>
           </li>
           <li className={clsx("flex-grow")} />
+          <li className={clsx("items-center", "flex", "mx-4", "mb-4")}>
+            <BsFillPersonFill className={clsx("text-3xl", "mr-2")} />
+            <span className={clsx("text-xl")}>Username</span>
+            <div className={clsx("ml-auto")} />
+            <Link href="/profile">
+              <a>
+                <CgProfile className={clsx("text-3xl", "mr-2")} />
+              </a>
+            </Link>
+            <Link href="/logout">
+              <a>
+                <IoMdLogOut className={clsx("text-3xl")} />
+              </a>
+            </Link>
+          </li>
           <li className={clsx("border-t", "border-gray-300")}>
             <Link href="/settings">
               <a
