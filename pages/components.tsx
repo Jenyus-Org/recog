@@ -10,6 +10,7 @@ import {
 } from "@ui/Card";
 import { Dropdown } from "@ui/Dropdown";
 import { Form, FormInput } from "@ui/Form";
+import clsx from "clsx";
 import {
   HiOutlineArrowCircleDown,
   HiOutlineArrowCircleUp,
@@ -78,6 +79,49 @@ export default function Components() {
           Share
         </Button>
         <Button pill outline variant="light-gray">
+          Share
+        </Button>
+      </div>
+      <div className={clsx("mt-2", "mb-2")}>
+        <h3 className={clsx("text-xl")}>With ring</h3>
+      </div>
+      <div className="flex flex-wrap mt-4">
+        <Button pill elevate outline variant="transparent" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate outline className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate outline variant="primary" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate outline variant="secondary" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate outline variant="gray" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate outline variant="light-gray">
+          Share
+        </Button>
+      </div>
+      <div className="flex flex-wrap mt-4">
+        <Button pill elevate variant="transparent" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate variant="primary" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate variant="secondary" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate variant="gray" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate variant="light-gray">
           Share
         </Button>
       </div>
