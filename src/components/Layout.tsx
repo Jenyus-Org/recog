@@ -85,6 +85,7 @@ export const Layout = ({ children }: LayoutProps) => (
                 "flex",
                 "items-center",
                 "justify-center",
+                "font-comfortaa",
               )}>
               Submit a Post
             </Button>
@@ -100,6 +101,7 @@ export const Layout = ({ children }: LayoutProps) => (
                 "flex",
                 "items-center",
                 "justify-center",
+                "font-comfortaa",
               )}>
               Create a Tutorial
             </Button>
@@ -116,6 +118,7 @@ export const Layout = ({ children }: LayoutProps) => (
                     "py-6",
                     "px-8",
                     "hover:bg-gray-200",
+                    "font-comfortaa",
                   )}>
                   <GoCommentDiscussion className={clsx("text-5xl", "mr-8")} />
                   <span className={clsx("text-2xl")}>Forum</span>
@@ -131,6 +134,7 @@ export const Layout = ({ children }: LayoutProps) => (
                     "py-6",
                     "px-8",
                     "hover:bg-gray-200",
+                    "font-comfortaa",
                   )}>
                   <BiNotepad className={clsx("text-5xl", "mr-8")} />
                   <span className={clsx("text-2xl")}>Tutorials</span>
@@ -146,6 +150,7 @@ export const Layout = ({ children }: LayoutProps) => (
                     "py-6",
                     "px-8",
                     "hover:bg-gray-200",
+                    "font-comfortaa",
                   )}>
                   <BiBriefcase className={clsx("text-5xl", "mr-8")} />
                   <span className={clsx("text-2xl")}>Jobs</span>
@@ -162,6 +167,7 @@ export const Layout = ({ children }: LayoutProps) => (
                     "py-6",
                     "px-8",
                     "hover:bg-gray-200",
+                    "font-comfortaa",
                   )}>
                   <FiSettings className={clsx("text-5xl", "mr-8")} />
                   <span className={clsx("text-2xl")}>Settings</span>
