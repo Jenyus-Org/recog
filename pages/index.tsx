@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <div>
       <Layout>
-        <div className={clsx("my-10", "flex", "items-center", "mx-auto")}>
+        <div className={clsx("mb-10", "flex", "items-center", "mx-auto")}>
           <div className={clsx("flex", "items-center", "mx-6")}>
             <span>Sort</span>
             <BiStats className={clsx("mx-3", "text-3xl")} />
