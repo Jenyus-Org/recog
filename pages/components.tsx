@@ -1,3 +1,4 @@
+import { Code } from "@components/Code";
 import { Button } from "@ui/Button";
 import {
   Card,
@@ -7,7 +8,9 @@ import {
   CardHeader,
   CardSidebar,
 } from "@ui/Card";
+import { Dropdown } from "@ui/Dropdown";
 import { Form, FormInput } from "@ui/Form";
+import clsx from "clsx";
 import {
   HiOutlineArrowCircleDown,
   HiOutlineArrowCircleUp,
@@ -59,6 +62,78 @@ export default function Components() {
           Share
         </Button>
       </div>
+      <div className="flex flex-wrap mt-4">
+        <Button pill outline variant="transparent" className="mr-2">
+          Share
+        </Button>
+        <Button pill outline className="mr-2">
+          Share
+        </Button>
+        <Button pill outline variant="primary" className="mr-2">
+          Share
+        </Button>
+        <Button pill outline variant="secondary" className="mr-2">
+          Share
+        </Button>
+        <Button pill outline variant="gray" className="mr-2">
+          Share
+        </Button>
+        <Button pill outline variant="light-gray">
+          Share
+        </Button>
+      </div>
+      <div className={clsx("mt-2", "mb-2")}>
+        <h3 className={clsx("text-xl")}>With ring</h3>
+      </div>
+      <div className="flex flex-wrap mt-4">
+        <Button pill elevate outline variant="transparent" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate outline className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate outline variant="primary" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate outline variant="secondary" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate outline variant="gray" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate outline variant="light-gray">
+          Share
+        </Button>
+      </div>
+      <div className="flex flex-wrap mt-4">
+        <Button pill elevate variant="transparent" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate variant="primary" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate variant="secondary" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate variant="gray" className="mr-2">
+          Share
+        </Button>
+        <Button pill elevate variant="light-gray">
+          Share
+        </Button>
+      </div>
+      <br />
+      <h3 className="text-xl mb-1">Code</h3>
+      <Code>
+        {`
+        <Button pill outline variant="light-gray">
+          Share
+        </Button>
+        `}
+      </Code>
       <br />
       <h2 className="text-2xl">Cards</h2>
       <br />
@@ -95,6 +170,42 @@ export default function Components() {
           <CardFooter>Footer</CardFooter>
         </Card>
       </div>
+      <br />
+      <h3 className="text-xl mb-1">Code</h3>
+      <Code>
+        {`
+        <Card>
+          <CardSidebar>
+            <!-- Sidebar content -->
+          </CardSidebar>
+          <CardBody>
+            <CardHeader>
+              <!-- Header content -->
+            </CardHeader>
+            <CardContent>
+              <!-- Main content -->
+            </CardContent>
+          </CardBody>
+          <CardFooter>
+            <!-- Footer content -->
+          </CardFooter>
+        </Card>`}
+      </Code>
+      <br />
+      <h2 className="text-2xl">Dropdowns</h2>
+      <br />
+      <div className="flex flex-wrap">
+        <Dropdown className="mr-2" />
+        <Dropdown pill variant="transparent" className="mr-2" />
+        <Dropdown pill className="mr-2" />
+        <Dropdown pill variant="primary" className="mr-2" />
+        <Dropdown pill variant="secondary" className="mr-2" />
+        <Dropdown pill variant="gray" className="mr-2" />
+        <Dropdown pill variant="light-gray" />
+      </div>
+      <br />
+      <h3 className="text-xl mb-1">Code</h3>
+      <Code>{`<Dropdown pill variant="light-gray" />`}</Code>
       <br />
       <h2 className="text-2xl">Forms</h2>
       <br />
@@ -153,6 +264,17 @@ export default function Components() {
                 />
               </div>
             </Form>
+            <br />
+            <h3 className="text-xl mb-1">Code</h3>
+            <Code>
+              {`
+              <FormInput
+                placeholder="Placeholder..."
+                fill="light-gray"
+                pill
+              />
+              `}
+            </Code>
           </CardContent>
         </CardBody>
       </Card>

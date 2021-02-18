@@ -26,7 +26,7 @@ module.exports = {
           dark: "#4E4EBA",
         },
         secondary: {
-          light: "##32D0DB",
+          light: "#6DDFE8",
           DEFAULT: "#3ECBDB",
           dark: "#27A0A8",
         },
@@ -34,7 +34,10 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      ringWidth: ["hover", "active"],
+      ringColor: ["hover", "active"],
+    },
   },
   plugins: [],
 };
