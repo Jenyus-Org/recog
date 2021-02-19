@@ -3,7 +3,6 @@ import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
 import { BiBriefcase, BiNotepad } from "react-icons/bi";
-import { CgProfile } from "react-icons/cg";
 import { BsFillPersonFill } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
 import { GoCommentDiscussion } from "react-icons/go";
@@ -143,32 +142,16 @@ export const Sidenav = () => (
               "py-4",
             )}>
             <BsFillPersonFill className={clsx("text-3xl", "mr-2")} />
-            <span className={clsx("text-xl")}>Username</span>
+            <span className={clsx("text-lg")}>Username</span>
             <div className={clsx("ml-auto")} />
             <Link href="/profile">
               <a>
-                <CgProfile className={clsx("text-3xl", "mr-2")} />
+                <FiSettings className={clsx("text-3xl", "mr-2")} />
               </a>
             </Link>
             <Link href="/logout">
               <a>
                 <IoMdLogOut className={clsx("text-3xl")} />
-              </a>
-            </Link>
-          </li>
-          <li className={clsx("border-t", "border-gray-300")}>
-            <Link href="/settings">
-              <a
-                className={clsx(
-                  "flex",
-                  "items-center",
-                  "py-6",
-                  "px-8",
-                  "hover:bg-gray-200",
-                  "font-comfortaa",
-                )}>
-                <FiSettings className={clsx("text-4xl", "mr-8")} />
-                <span className={clsx("text-xl")}>Settings</span>
               </a>
             </Link>
           </li>
