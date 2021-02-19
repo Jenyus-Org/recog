@@ -24,9 +24,9 @@ export const Sidenav = () => (
       "flex",
       "flex-col",
     )}>
-    <div className={clsx("h-20", "px-8", "flex", "items-center")}>
+    <div className={clsx("py-6", "px-8", "flex", "items-center")}>
       <Link href="/">
-        <a className="font-bold font-comfortaa leading-5 text-4xl">
+        <a className="font-bold font-comfortaa leading-7 text-5xl">
           <span className="text-primary">re</span>
           <br />
           <span className="text-secondary">cog</span>
