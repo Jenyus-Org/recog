@@ -24,9 +24,9 @@ export const Sidenav = () => (
       "flex",
       "flex-col",
     )}>
-    <div className={clsx("py-6", "px-8", "flex", "items-center")}>
+    <div className={clsx("h-16", "px-8", "flex", "items-center")}>
       <Link href="/">
-        <a className="font-bold font-comfortaa leading-7 text-5xl">
+        <a className="font-bold font-comfortaa leading-5 text-4xl">
           <span className="text-primary">re</span>
           <br />
           <span className="text-secondary">cog</span>
@@ -64,12 +64,6 @@ export const Sidenav = () => (
           "items-center",
         )}>
         <div className={clsx("flex", "flex-col")}>
-          <FormInput
-            pill
-            fill="light-gray"
-            placeholder="Search..."
-            className={clsx("mb-8", "w-full")}
-          />
           <p className={clsx("font-bold", "mb-10", "text-center")}>
             Contribute to the Community!
           </p>
