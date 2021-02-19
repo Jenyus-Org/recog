@@ -5107,6 +5107,11 @@ table@^6.0.4:
     slice-ansi "^4.0.0"
     string-width "^4.2.0"
 
+tailwind-scrollbar@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/tailwind-scrollbar/-/tailwind-scrollbar-1.2.3.tgz#3d22982d0c75049470016b83b5b0423841daa017"
+  integrity sha512-eMOwG0gkiUztGSA8bPZD626VeBLknFo5QeJQJNLNYLgMID8oPNpzcy7I6EtMMkqYlmbGxSvM0fwoXneSRoXKfg==
+
 tailwindcss@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-2.0.2.tgz#28e1573d29dd4547b26782facb05bcfaa92be366"

@@ -38,6 +38,7 @@ module.exports = {
       ringWidth: ["hover", "active"],
       ringColor: ["hover", "active"],
     },
+    scrollbar: ["dark", "rounded"],
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };

@@ -43,6 +43,7 @@ export const Sidenav = () => (
       "h-screen",
       "flex",
       "flex-col",
+      "justify-start",
     )}>
     <div className={clsx("h-16", "px-8", "flex", "items-center")}>
       <Link href="/">
@@ -54,7 +55,17 @@ export const Sidenav = () => (
       </Link>
     </div>
     <div
-      className={clsx("flex", "flex-grow", "flex-col", "pt-4", "items-center")}>
+      className={clsx(
+        "flex-grow",
+        "flex",
+        "flex-col",
+        "mt-4",
+        "items-center",
+        "overflow-y-auto",
+        "scrollbar-thin",
+        "scrollbar-thumb-gray-900",
+        "scrollbar-thumb-rounded",
+      )}>
       <div
         className={clsx(
           "flex",
@@ -105,7 +116,7 @@ export const Sidenav = () => (
           </Button>
         </div>
       </div>
-      <nav className={clsx("flex", "flex-col", "w-full", "flex-grow")}>
+      <nav className={clsx("w-full", "flex-grow")}>
         <ul className={clsx("w-full", "flex", "flex-col", "flex-grow")}>
           <li>
             <NavLink to="/forum" icon={<GoCommentDiscussion />}>
@@ -122,32 +133,32 @@ export const Sidenav = () => (
               Jobs
             </NavLink>
           </li>
-          <li className={clsx("flex-grow")} />
-          <li
-            className={clsx(
-              "border-t",
-              "border-gray-300",
-              "items-center",
-              "flex",
-              "mx-4",
-              "py-4",
-            )}>
-            <BsFillPersonFill className={clsx("text-3xl", "mr-2")} />
-            <span className={clsx("text-lg")}>Username</span>
-            <div className={clsx("ml-auto")} />
-            <Link href="/profile">
-              <a>
-                <FiSettings className={clsx("text-3xl", "mr-2")} />
-              </a>
-            </Link>
-            <Link href="/logout">
-              <a>
-                <IoMdLogOut className={clsx("text-3xl")} />
-              </a>
-            </Link>
-          </li>
         </ul>
       </nav>
+    </div>
+    <div
+      className={clsx(
+        "border-t",
+        "border-gray-300",
+        "items-center",
+        "flex",
+        "px-4",
+        "py-4",
+        "w-full",
+      )}>
+      <BsFillPersonFill className={clsx("text-3xl", "mr-2")} />
+      <span className={clsx("text-lg")}>Username</span>
+      <div className={clsx("ml-auto")} />
+      <Link href="/profile">
+        <a>
+          <FiSettings className={clsx("text-3xl", "mr-2")} />
+        </a>
+      </Link>
+      <Link href="/logout">
+        <a>
+          <IoMdLogOut className={clsx("text-3xl")} />
+        </a>
+      </Link>
     </div>
   </div>
 );
