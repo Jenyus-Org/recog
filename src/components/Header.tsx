@@ -1,6 +1,9 @@
 import { FormInput } from "@ui/Form";
 import clsx from "clsx";
+import Link from "next/link";
 import React from "react";
+import { BsBellFill } from "react-icons/bs";
+import { HiOutlineChatAlt } from "react-icons/hi";
 
 export const Header = () => (
   <header
@@ -10,7 +13,6 @@ export const Header = () => (
       "flex",
       "items-center",
       "h-16",
-      "flex-row-reverse",
       "fixed",
       "top-0",
       "right-0",
@@ -22,7 +24,21 @@ export const Header = () => (
       pill
       fill="light-gray"
       placeholder="Search..."
-      className={clsx("mr-4")}
+      className={clsx("mr-4", "ml-auto")}
     />
+    <div>
+      <Link href="/chat">
+        <a className={clsx("p-2", "flex", "items-center")}>
+          <HiOutlineChatAlt className={clsx("text-3xl")} />
+        </a>
+      </Link>
+    </div>
+    <div>
+      <Link href="/notifications">
+        <a className={clsx("p-2", "flex", "items-center", "mr-2")}>
+          <BsBellFill className={clsx("text-3xl")} />
+        </a>
+      </Link>
+    </div>
   </header>
 );
