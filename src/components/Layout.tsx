@@ -11,7 +11,7 @@ export const Layout = ({ children }: LayoutProps) => (
   <React.Fragment>
     <Header />
     <Sidenav />
-    <main className={clsx("p-6", "ml-72", "mt-16")}>{children}</main>
+    <main className={clsx("p-6", "ml-64", "mt-16")}>{children}</main>
     <footer></footer>
   </React.Fragment>
 );
