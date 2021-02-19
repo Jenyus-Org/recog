@@ -11,7 +11,7 @@ import { IoMdLogOut } from "react-icons/io";
 export const Sidenav = () => (
   <div
     className={clsx(
-      "w-72",
+      "w-64",
       "bg-white",
       "fixed",
       "top-0",
@@ -51,6 +51,7 @@ export const Sidenav = () => (
             elevate
             variant="primary"
             className={clsx(
+              "text-sm",
               "mb-4",
               "text-md",
               "px-6",
@@ -68,7 +69,7 @@ export const Sidenav = () => (
             elevate
             variant="secondary"
             className={clsx(
-              "text-md",
+              "text-sm",
               "px-6",
               "py-3",
               "uppercase",
@@ -89,13 +90,13 @@ export const Sidenav = () => (
                 className={clsx(
                   "flex",
                   "items-center",
-                  "py-6",
+                  "py-4",
                   "px-8",
                   "hover:bg-gray-200",
                   "font-comfortaa",
                 )}>
                 <GoCommentDiscussion className={clsx("text-4xl", "mr-8")} />
-                <span className={clsx("text-xl")}>Forum</span>
+                <span className={clsx("text-lg")}>Forum</span>
               </a>
             </Link>
           </li>
@@ -105,13 +106,13 @@ export const Sidenav = () => (
                 className={clsx(
                   "flex",
                   "items-center",
-                  "py-6",
+                  "py-4",
                   "px-8",
                   "hover:bg-gray-200",
                   "font-comfortaa",
                 )}>
                 <BiNotepad className={clsx("text-4xl", "mr-8")} />
-                <span className={clsx("text-xl")}>Tutorials</span>
+                <span className={clsx("text-lg")}>Tutorials</span>
               </a>
             </Link>
           </li>
@@ -121,13 +122,13 @@ export const Sidenav = () => (
                 className={clsx(
                   "flex",
                   "items-center",
-                  "py-6",
+                  "py-4",
                   "px-8",
                   "hover:bg-gray-200",
                   "font-comfortaa",
                 )}>
                 <BiBriefcase className={clsx("text-4xl", "mr-8")} />
-                <span className={clsx("text-xl")}>Jobs</span>
+                <span className={clsx("text-lg")}>Jobs</span>
               </a>
             </Link>
           </li>
