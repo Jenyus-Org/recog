@@ -1,21 +1,11 @@
-import React from "react";
+import { gql, useQuery } from "@apollo/client";
 import { Layout } from "@components/Layout";
 import { PostCard } from "@components/PostCard";
+import { Post as PostModel } from "@models/Post";
 import { Dropdown } from "@ui/Dropdown";
 import clsx from "clsx";
+import React from "react";
 import { BiStats } from "react-icons/bi";
-import { gql, useQuery } from "@apollo/client";
-import { Post as PostModel } from "@models/Post";
-import { BsArrowDownShort, BsArrowUpShort } from "react-icons/bs";
-import { Button } from "@ui/Button";
-import {
-  Card,
-  CardBody,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardSidebar,
-} from "@ui/Card";
 
 export default function Home() {
   const ALL_POSTS_QUERY = gql`
@@ -46,48 +36,7 @@ export default function Home() {
           </div>
           <div className={clsx("ml-4", "mr-6", "grid", "gap-4")}>
             {[...Array(10)].map((val) => (
-              <Card className={clsx("bg-white", "animate-pulse")} key={val}>
-                <CardSidebar className={clsx("grid", "gap-4")}>
-                  <Button pill>
-                    <BsArrowUpShort />
-                  </Button>
-                  <Button pill>
-                    <BsArrowDownShort />
-                  </Button>
-                </CardSidebar>
-                <CardBody>
-                  <CardHeader>
-                    <div
-                      className={clsx(
-                        "h-6",
-                        "bg-gray-100",
-                        "rounded",
-                        "w-3/4",
-                        "mb-2",
-                      )}
-                    />
-                  </CardHeader>
-                  <CardContent>
-                    <div
-                      className={clsx(
-                        "h-4",
-                        "bg-gray-100",
-                        "rounded",
-                        "mb-2",
-                        "mr-2",
-                      )}
-                    />
-                    <div
-                      className={clsx("h-4", "bg-gray-100", "rounded", "w-5/6")}
-                    />
-                  </CardContent>
-                </CardBody>
-                <CardFooter>
-                  <div
-                    className={clsx("h-4", "bg-gray-100", "rounded", "w-1/4")}
-                  />
-                </CardFooter>
-              </Card>
+              <PostCardSkeleton />
             ))}
           </div>
         </Layout>
