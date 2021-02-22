@@ -7,7 +7,7 @@ interface CardProps extends CustomComponentProps<HTMLDivElement> {
 }
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ elevated, children, className, ...props }) => (
+  ({ elevated, children, className, ...props }, ref) => (
     <div
       className={clsx(
         "w-full",
@@ -23,6 +23,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         },
         className,
       )}
+      ref={ref}
       {...props}>
       {children}
     </div>
@@ -32,8 +33,8 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
 interface CardBodyProps extends CustomComponentProps<HTMLDivElement> {}
 
 export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(
-  ({ children, className, ...props }) => (
-    <div className={clsx("flex-1", className)} {...props}>
+  ({ children, className, ...props }, ref) => (
+    <div className={clsx("flex-1", className)} ref={ref} {...props}>
       {children}
     </div>
   ),
@@ -44,8 +45,8 @@ interface CardHeaderProps extends CustomComponentProps<HTMLParagraphElement> {}
 export const CardHeader = React.forwardRef<
   HTMLParagraphElement,
   CardHeaderProps
->(({ children, className, ...props }) => (
-  <p className={clsx("text-lg", "font-bold", className)} {...props}>
+>(({ children, className, ...props }, ref) => (
+  <p className={clsx("text-lg", "font-bold", className)} ref={ref} {...props}>
     {children}
   </p>
 ));
@@ -53,8 +54,11 @@ export const CardHeader = React.forwardRef<
 interface CardContentProps extends CustomComponentProps<HTMLDivElement> {}
 
 export const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
-  ({ children, className, ...props }) => (
-    <div className={clsx("text-base", "text-gray-400", className)} {...props}>
+  ({ children, className, ...props }, ref) => (
+    <div
+      className={clsx("text-base", "text-gray-400", className)}
+      ref={ref}
+      {...props}>
       {children}
     </div>
   ),
@@ -63,8 +67,8 @@ export const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
 interface CardSidebarProps extends CustomComponentProps<HTMLDivElement> {}
 
 export const CardSidebar = React.forwardRef<HTMLDivElement, CardSidebarProps>(
-  ({ children, className, ...props }) => (
-    <div className={clsx("mr-4", "px-4", className)} {...props}>
+  ({ children, className, ...props }, ref) => (
+    <div className={clsx("mr-4", "px-4", className)} ref={ref} {...props}>
       {children}
     </div>
   ),
@@ -73,7 +77,7 @@ export const CardSidebar = React.forwardRef<HTMLDivElement, CardSidebarProps>(
 interface CardFooterProps extends CustomComponentProps<HTMLDivElement> {}
 
 export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
-  ({ children, className, ...props }) => (
+  ({ children, className, ...props }, ref) => (
     <div
       className={clsx(
         "flex-full",
@@ -83,6 +87,7 @@ export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
         "mt-4",
         className,
       )}
+      ref={ref}
       {...props}>
       {children}
     </div>

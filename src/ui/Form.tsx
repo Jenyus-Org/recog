@@ -7,7 +7,7 @@ interface FormProps extends CustomComponentProps<HTMLFormElement> {
 }
 
 export const Form = React.forwardRef<HTMLFormElement, FormProps>(
-  ({ onSubmit, prevent, ...props }) => {
+  ({ onSubmit, prevent, ...props }, ref) => {
     const customOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       if (prevent) {
         event.preventDefault();
@@ -15,7 +15,7 @@ export const Form = React.forwardRef<HTMLFormElement, FormProps>(
       onSubmit && onSubmit(event);
     };
 
-    return <form onSubmit={customOnSubmit} {...props} />;
+    return <form onSubmit={customOnSubmit} ref={ref} {...props} />;
   },
 );
 
@@ -26,7 +26,10 @@ interface FormInputProps extends CustomComponentProps<HTMLInputElement> {
 }
 
 export const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
-  ({ fill = "default", variant = "default", pill, className, ...props }) => (
+  (
+    { fill = "default", variant = "default", pill, className, ...props },
+    ref,
+  ) => (
     <input
       className={clsx(
         "py-2",
@@ -51,6 +54,7 @@ export const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
         },
         className,
       )}
+      ref={ref}
       {...props}
     />
   ),

@@ -5,10 +5,11 @@ import { Button, ButtonProps } from "./Button";
 
 interface DropdownProps extends ButtonProps {
   multiple?: boolean;
+  label: string;
 }
 
 export const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
-  ({ className, variant = "default", ...props }, ref) => {
+  ({ className, variant = "default", label, ...props }, ref) => {
     const [open, setOpen] = React.useState(false);
 
     const closeDropdown = React.useCallback(() => setOpen(false), [setOpen]);
@@ -28,7 +29,7 @@ export const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
             onClick={toggleDropdown}
             ref={ref}
             variant={variant}>
-            Options
+            {label}
             <BsChevronDown className="-mr-1 ml-2 h-5 w-5" size="20" />
           </Button>
         </div>

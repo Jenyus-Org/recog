@@ -30,7 +30,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         "py-2",
         "border",
         "border-transparent",
-        "text-base",
         "text-white",
         "font-medium",
         "flex",
