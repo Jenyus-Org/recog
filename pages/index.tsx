@@ -1,5 +1,5 @@
 import { Layout } from "@components/Layout";
-import { Post } from "@components/Post";
+import { PostCard } from "@components/PostCard";
 import { Dropdown } from "@ui/Dropdown";
 import clsx from "clsx";
 import { BiStats } from "react-icons/bi";
@@ -38,7 +38,7 @@ export default function Home() {
         </div>
         <div className={clsx("ml-4", "mr-6", "grid", "gap-4")}>
           {posts.map((post, index) => (
-            <Post post={post} key={index} />
+            <PostCard post={post} key={index} />
           ))}
         </div>
       </Layout>

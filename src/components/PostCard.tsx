@@ -16,7 +16,7 @@ interface PostProps {
   post: PostModel;
 }
 
-export const Post = ({ post }: PostProps) => {
+export const PostCard = ({ post }: PostProps) => {
   return (
     <Card className={clsx("bg-white")}>
       <CardSidebar className={clsx("grid", "gap-4")}>
