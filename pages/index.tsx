@@ -45,8 +45,8 @@ export default function Home() {
             </div>
           </div>
           <div className={clsx("ml-4", "mr-6", "grid", "gap-4")}>
-            {[...Array(10)].map((post: PostModel) => (
-              <Card className={clsx("bg-white", "animate-pulse")}>
+            {[...Array(10)].map((val) => (
+              <Card className={clsx("bg-white", "animate-pulse")} key={val}>
                 <CardSidebar className={clsx("grid", "gap-4")}>
                   <Button pill>
                     <BsArrowUpShort />
@@ -59,36 +59,33 @@ export default function Home() {
                   <CardHeader>
                     <div
                       className={clsx(
-                        "h-4",
-                        "bg-light-gray-400",
+                        "h-6",
+                        "bg-gray-100",
                         "rounded",
                         "w-3/4",
-                      )}></div>
+                        "mb-2",
+                      )}
+                    />
                   </CardHeader>
                   <CardContent>
                     <div
                       className={clsx(
                         "h-4",
-                        "bg-light-gray-400",
+                        "bg-gray-100",
                         "rounded",
-                      )}></div>
+                        "mb-2",
+                        "mr-2",
+                      )}
+                    />
                     <div
-                      className={clsx(
-                        "h-4",
-                        "bg-light-gray-400",
-                        "rounded",
-                        "w-5/6",
-                      )}></div>
+                      className={clsx("h-4", "bg-gray-100", "rounded", "w-5/6")}
+                    />
                   </CardContent>
                 </CardBody>
                 <CardFooter>
                   <div
-                    className={clsx(
-                      "h-4",
-                      "bg-light-gray-400",
-                      "rounded",
-                      "w-1/4",
-                    )}></div>
+                    className={clsx("h-4", "bg-gray-100", "rounded", "w-1/4")}
+                  />
                 </CardFooter>
               </Card>
             ))}
