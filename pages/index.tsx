@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import { Layout } from "@components/Layout";
 import { PostCard } from "@components/PostCard";
+import { PostCardSkeleton } from "@components/PostCardSkeleton";
 import { Post as PostModel } from "@models/Post";
 import { Dropdown } from "@ui/Dropdown";
 import clsx from "clsx";
