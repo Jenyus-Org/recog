@@ -12,7 +12,7 @@ import React from "react";
 import { BsArrowDownShort, BsArrowUpShort } from "react-icons/bs";
 
 export const PostCardSkeleton = () => (
-  <Card className={clsx("bg-white", "animate-pulse")} key={val}>
+  <Card className={clsx("bg-white", "animate-pulse")}>
     <CardSidebar className={clsx("grid", "gap-4")}>
       <Button pill>
         <BsArrowUpShort />

@@ -36,7 +36,7 @@ export default function Home() {
             </div>
           </div>
           <div className={clsx("ml-4", "mr-6", "grid", "gap-4")}>
-            {[...Array(10)].map((val) => (
+            {[...Array(10)].map((_, val) => (
               <PostCardSkeleton key={val} />
             ))}
           </div>

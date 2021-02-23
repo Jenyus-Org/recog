@@ -80,24 +80,26 @@ export const Sidenav = () => (
           <p className={clsx("font-bold", "mb-10", "text-center")}>
             Contribute to the Community!
           </p>
-          <Button
-            pill
-            elevate
-            variant="primary"
-            className={clsx(
-              "text-sm",
-              "mb-4",
-              "text-md",
-              "px-6",
-              "py-3",
-              "uppercase",
-              "flex",
-              "items-center",
-              "justify-center",
-              "font-comfortaa",
-            )}>
-            Submit a Post
-          </Button>
+          <Link href="/forum/submit">
+            <Button
+              pill
+              elevate
+              variant="primary"
+              className={clsx(
+                "text-sm",
+                "mb-4",
+                "text-md",
+                "px-6",
+                "py-3",
+                "uppercase",
+                "flex",
+                "items-center",
+                "justify-center",
+                "font-comfortaa",
+              )}>
+              Submit a Post
+            </Button>
+          </Link>
           <Button
             pill
             elevate
