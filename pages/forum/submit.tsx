@@ -1,8 +1,9 @@
+import { Layout } from "@components/Layout";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Form, FormInput } from "@ui/Form";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Form, FormInput } from "@ui/Form";
 
 export default function Submit() {
   const schema = yup.object().shape({
@@ -16,13 +17,13 @@ export default function Submit() {
   };
 
   return (
-    <div>
+    <Layout>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <FormInput type="text" name="title" ref={register} />
         <p>{errors.title?.message}</p>
 
         <FormInput type="submit" />
       </Form>
-    </div>
+    </Layout>
   );
 }
