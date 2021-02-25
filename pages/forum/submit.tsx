@@ -21,7 +21,6 @@ export default function Submit() {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <FormInput type="text" name="title" ref={register} />
         <p>{errors.title?.message}</p>
-
         <FormInput type="submit" />
       </Form>
     </Layout>
