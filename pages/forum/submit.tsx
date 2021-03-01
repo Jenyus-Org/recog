@@ -1,5 +1,4 @@
 import { Layout } from "@components/Layout";
-import { QuillEditor } from "@components/QuillEditor";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Form, FormInput } from "@ui/Form";
 import React from "react";
@@ -23,14 +22,14 @@ export default function Submit() {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <FormInput type="text" name="title" ref={register} />
         <p>{errors.title?.message}</p>
-        <QuillNoSSRWrapper/>
+        <QuillNoSSRWrapper />
         <FormInput type="submit" />
       </Form>
     </Layout>
   );
 }
 
-const QuillNoSSRWrapper = dynamic(
-  () => import("@components/QuillEditor"),
-  { ssr: false, loading: "loading" },
-);
+const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
