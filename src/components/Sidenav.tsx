@@ -45,8 +45,8 @@ export const Sidenav = () => (
           _hover={{ textDecoration: "none" }}
           _focus={{ borderColor: "none" }}>
           <Heading lineHeight={5}>
-            <Text color="primary.600">re</Text>
-            <Text color="secondary.600">cog</Text>
+            <Text color="primary.500">re</Text>
+            <Text color="secondary.500">cog</Text>
           </Heading>
         </Link>
       </NextLink>
@@ -60,7 +60,7 @@ export const Sidenav = () => (
           <NextLink href="/forum/submit" passHref>
             <Button
               as="a"
-              backgroundColor="primary.600"
+              colorScheme="primary"
               borderRadius="full"
               color="white"
               fontSize="md"
@@ -68,29 +68,27 @@ export const Sidenav = () => (
               px={6}
               py={3}
               mb={4}
-              sx={{ textTransform: "uppercase" }}
-              _hover={{ backgroundColor: "primary.400" }}>
-              Submit a Post
+              sx={{ textTransform: "uppercase" }}>
+              Submit Post
             </Button>
           </NextLink>
           <NextLink href="/forum/submit" passHref>
             <Button
               as="a"
-              backgroundColor="secondary.600"
+              colorScheme="secondary"
               borderRadius="full"
               color="white"
               fontSize="md"
               fontWeight="medium"
               px={6}
               py={3}
-              sx={{ textTransform: "uppercase" }}
-              _hover={{ backgroundColor: "secondary.400" }}>
+              sx={{ textTransform: "uppercase" }}>
               Create a Tutorial
             </Button>
           </NextLink>
         </Flex>
       </Flex>
-      <Divider color="gray.300" />
+      <Divider />
       <Flex as="nav" w="full">
         <Flex as="ul" w="full" direction="column">
           <li>
@@ -112,7 +110,7 @@ export const Sidenav = () => (
       </Flex>
     </Flex>
     <Spacer />
-    <Divider color="gray.300" />
+    <Divider />
     <Flex align="center" px={4} py={4} w="full">
       <Text fontSize="3xl" mr={2}>
         <BsFillPersonFill />
