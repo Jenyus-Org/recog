@@ -3,13 +3,13 @@ import { extendTheme } from "@chakra-ui/react";
 const colors = {
   primary: {
     400: "#AAAAEB",
-    600: "#7272ed",
-    800: "#4E4EBA",
+    500: "#7272ed",
+    600: "#4E4EBA",
   },
   secondary: {
     400: "#6DDFE8",
-    600: "#3ECBDB",
-    800: "#27A0A8",
+    500: "#3ECBDB",
+    600: "#27A0A8",
   },
 };
 
@@ -24,6 +24,20 @@ const components = {
       "upvote-button": {
         _focus: { outline: "none" },
         borderRadius: "5px",
+      },
+    },
+  },
+  Tabs: {
+    parts: ["tab"],
+    baseStyle: {
+      tab: {
+        _focus: {
+          boxShadow: "none",
+          outline: "none",
+        },
+        _hover: {
+          backgroundColor: "gray.100",
+        },
       },
     },
   },
