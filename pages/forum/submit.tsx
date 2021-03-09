@@ -1,11 +1,20 @@
+import { Button } from "@chakra-ui/button";
+import {
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+} from "@chakra-ui/form-control";
+import { Input } from "@chakra-ui/input";
+import { Box, Text } from "@chakra-ui/layout";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import { Layout } from "@components/Layout";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Form, FormInput } from "@ui/Form";
+import clsx from "clsx";
+import dynamic from "next/dynamic";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { TiDocumentText, TiEdit } from "react-icons/ti";
 import * as yup from "yup";
-import dynamic from "next/dynamic";
-import clsx from "clsx";
 
 export default function Submit() {
   const schema = yup.object().shape({
@@ -23,35 +32,53 @@ export default function Submit() {
 
   return (
     <Layout>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <FormInput
-          type="text"
-          name="title"
-          placeholder="Post Title"
-          ref={register}
-          variant="gray"
-          className={clsx("w-full")}
-        />
-        <p className={clsx("text-red-400")}>{errors.title?.message}</p>
-        <br />
-        <QuillNoSSRWrapper
-          className={clsx("bg-white")}
-          onChange={setText}
-          value={text}
-        />
-        <br />
-        <div className={clsx("bg-white", "p-4")}>
-          <p className={clsx("font-bold")}>Preview</p>
-          <hr />
-          <br />
-          <div
-            dangerouslySetInnerHTML={{ __html: text }}
-            style={{ overflowWrap: "break-word" }}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl isInvalid={!!errors.title} isRequired>
+          <FormLabel htmlFor="title">Post Title</FormLabel>
+          <Input
+            type="text"
+            name="title"
+            placeholder="Post Title"
+            ref={register}
+            backgroundColor="white"
           />
-        </div>
+          <FormErrorMessage>{errors.title?.message}</FormErrorMessage>
+        </FormControl>
         <br />
-        <FormInput type="submit" />
-      </Form>
+        <Tabs isFitted backgroundColor="white">
+          <TabList>
+            <Tab>
+              <Text mr={2}>
+                <TiEdit />
+              </Text>
+              Editor
+            </Tab>
+            <Tab>
+              <Text mr={2}>
+                <TiDocumentText />
+              </Text>
+              Preview
+            </Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <QuillNoSSRWrapper onChange={setText} value={text} />
+            </TabPanel>
+            <TabPanel>
+              <Box p={4}>
+                <div
+                  dangerouslySetInnerHTML={{ __html: text }}
+                  style={{ overflowWrap: "break-word" }}
+                />
+              </Box>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
+        <br />
+        <Button type="submit" colorScheme="primary" ml="auto" display="block">
+          Submit
+        </Button>
+      </form>
     </Layout>
   );
 }
