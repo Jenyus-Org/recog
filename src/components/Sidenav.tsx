@@ -1,6 +1,6 @@
-import { Button } from "@ui/Button";
-import clsx from "clsx";
-import Link from "next/link";
+import { Button } from "@chakra-ui/button";
+import { Divider, Flex, Heading, Link, Spacer, Text } from "@chakra-ui/layout";
+import NextLink from "next/link";
 import React from "react";
 import { BiBriefcase, BiNotepad } from "react-icons/bi";
 import { BsFillPersonFill } from "react-icons/bs";
@@ -15,111 +15,84 @@ interface NavLinkProps {
 }
 
 const NavLink = ({ to, children, icon }: NavLinkProps) => (
-  <Link href={to}>
-    <a
-      className={clsx(
-        "flex",
-        "items-center",
-        "py-4",
-        "px-8",
-        "hover:bg-gray-200",
-        "font-comfortaa",
-      )}>
-      <span className={clsx("text-4xl", "mr-8")}>{icon}</span>
-      <span className={clsx("text-lg")}>{children}</span>
-    </a>
-  </Link>
+  <NextLink href={to} passHref>
+    <Heading
+      as="a"
+      display="flex"
+      alignItems="center"
+      py={4}
+      px={8}
+      _hover={{ backgroundColor: "gray.200" }}>
+      <Text mr={8}>{icon}</Text>
+      <Text fontSize="lg">{children}</Text>
+    </Heading>
+  </NextLink>
 );
 
 export const Sidenav = () => (
-  <div
-    className={clsx(
-      "w-64",
-      "bg-white",
-      "fixed",
-      "top-0",
-      "left-0",
-      "z-50",
-      "h-screen",
-      "flex",
-      "flex-col",
-      "justify-start",
-    )}>
-    <div className={clsx("h-16", "px-8", "flex", "items-center")}>
-      <Link href="/">
-        <a className="font-bold font-comfortaa leading-5 text-4xl">
-          <span className="text-primary">re</span>
-          <br />
-          <span className="text-secondary">cog</span>
-        </a>
-      </Link>
-    </div>
-    <div
-      className={clsx(
-        "flex-grow",
-        "flex",
-        "flex-col",
-        "mt-4",
-        "items-center",
-        "overflow-y-auto",
-        "scrollbar-thin",
-        "scrollbar-thumb-gray-900",
-        "scrollbar-thumb-rounded",
-      )}>
-      <div
-        className={clsx(
-          "flex",
-          "flex-col",
-          "border-b",
-          "border-gray-300",
-          "pb-10",
-          "w-full",
-          "items-center",
-        )}>
-        <div className={clsx("flex", "flex-col")}>
-          <p className={clsx("font-bold", "mb-10", "text-center")}>
+  <Flex
+    w={64}
+    background="white"
+    position="fixed"
+    top={0}
+    left={0}
+    sx={{ height: "100vh", zIndex: "50" }}
+    direction="column"
+    justifyContent="start">
+    <Flex h={16} px={8} align="center">
+      <NextLink href="/" passHref>
+        <Link
+          _hover={{ textDecoration: "none" }}
+          _focus={{ borderColor: "none" }}>
+          <Heading lineHeight={5}>
+            <Text color="primary.600">re</Text>
+            <Text color="secondary.600">cog</Text>
+          </Heading>
+        </Link>
+      </NextLink>
+    </Flex>
+    <Flex direction="column" mt={4} align="center" overflowY="auto">
+      <Flex direction="column" pb={10} w="full" align="center">
+        <Flex direction="column">
+          <Text mb={10} fontWeight="bold" textAlign="center">
             Contribute to the Community!
-          </p>
-          <Link href="/forum/submit">
+          </Text>
+          <NextLink href="/forum/submit" passHref>
             <Button
-              pill
-              elevate
-              variant="primary"
-              className={clsx(
-                "text-sm",
-                "mb-4",
-                "text-md",
-                "px-6",
-                "py-3",
-                "uppercase",
-                "flex",
-                "items-center",
-                "justify-center",
-                "font-comfortaa",
-              )}>
+              as="a"
+              backgroundColor="primary.600"
+              borderRadius="full"
+              color="white"
+              fontSize="md"
+              fontWeight="medium"
+              px={6}
+              py={3}
+              mb={4}
+              sx={{ textTransform: "uppercase" }}
+              _hover={{ backgroundColor: "primary.400" }}>
               Submit a Post
             </Button>
-          </Link>
-          <Button
-            pill
-            elevate
-            variant="secondary"
-            className={clsx(
-              "text-sm",
-              "px-6",
-              "py-3",
-              "uppercase",
-              "flex",
-              "items-center",
-              "justify-center",
-              "font-comfortaa",
-            )}>
-            Create a Tutorial
-          </Button>
-        </div>
-      </div>
-      <nav className={clsx("w-full", "flex-grow")}>
-        <ul className={clsx("w-full", "flex", "flex-col", "flex-grow")}>
+          </NextLink>
+          <NextLink href="/forum/submit" passHref>
+            <Button
+              as="a"
+              backgroundColor="secondary.600"
+              borderRadius="full"
+              color="white"
+              fontSize="md"
+              fontWeight="medium"
+              px={6}
+              py={3}
+              sx={{ textTransform: "uppercase" }}
+              _hover={{ backgroundColor: "secondary.400" }}>
+              Create a Tutorial
+            </Button>
+          </NextLink>
+        </Flex>
+      </Flex>
+      <Divider color="gray.300" />
+      <Flex as="nav" w="full">
+        <Flex as="ul" w="full" direction="column">
           <li>
             <NavLink to="/forum" icon={<GoCommentDiscussion />}>
               Forum
@@ -135,32 +108,27 @@ export const Sidenav = () => (
               Jobs
             </NavLink>
           </li>
-        </ul>
-      </nav>
-    </div>
-    <div
-      className={clsx(
-        "border-t",
-        "border-gray-300",
-        "items-center",
-        "flex",
-        "px-4",
-        "py-4",
-        "w-full",
-      )}>
-      <BsFillPersonFill className={clsx("text-3xl", "mr-2")} />
-      <span className={clsx("text-lg")}>Username</span>
-      <div className={clsx("ml-auto")} />
-      <Link href="/profile">
-        <a>
-          <FiSettings className={clsx("text-3xl", "mr-2")} />
-        </a>
-      </Link>
-      <Link href="/logout">
-        <a>
-          <IoMdLogOut className={clsx("text-3xl")} />
-        </a>
-      </Link>
-    </div>
-  </div>
+        </Flex>
+      </Flex>
+    </Flex>
+    <Spacer />
+    <Divider color="gray.300" />
+    <Flex align="center" px={4} py={4} w="full">
+      <Text fontSize="3xl" mr={2}>
+        <BsFillPersonFill />
+      </Text>
+      <Text fontSize="lg">Username</Text>
+      <Spacer />
+      <NextLink href="/profile" passHref>
+        <Link fontSize="3xl" mr={2}>
+          <FiSettings />
+        </Link>
+      </NextLink>
+      <NextLink href="/logout" passHref>
+        <Link fontSize="3xl">
+          <IoMdLogOut />
+        </Link>
+      </NextLink>
+    </Flex>
+  </Flex>
 );
