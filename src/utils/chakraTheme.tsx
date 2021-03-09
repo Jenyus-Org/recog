@@ -1,4 +1,4 @@
-import { extendTheme } from "@chakra-ui/react";
+import { extendTheme, ThemeComponents, ThemeOverride } from "@chakra-ui/react";
 
 const colors = {
   primary: {
@@ -13,7 +13,7 @@ const colors = {
   },
 };
 
-const components = {
+const components: Partial<ThemeComponents> = {
   Button: {
     variants: {
       "menu-button": {
@@ -41,6 +41,20 @@ const components = {
       },
     },
   },
+  Menu: {
+    parts: ["item"],
+    baseStyle: {
+      item: {
+        _hover: { outline: "none" },
+        _focus: { outline: "none" },
+      },
+    },
+  },
+  Input: {
+    baseStyle: {
+      _focus: { borderColor: "none", boxShadow: "none" },
+    },
+  },
 };
 
 const fonts = {
@@ -48,6 +62,6 @@ const fonts = {
   heading: "Comfortaa, Georgia, serif",
 };
 
-const customTheme = { colors, fonts, components };
+const customTheme: ThemeOverride = { colors, fonts, components };
 
 export const theme = extendTheme(customTheme);
