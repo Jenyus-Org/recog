@@ -1,4 +1,4 @@
-import { Box, Grid, Button, Wrap, Flex } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid } from "@chakra-ui/react";
 import React from "react";
 import { BsArrowDownShort, BsArrowUpShort } from "react-icons/bs";
 

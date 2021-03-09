@@ -9,12 +9,16 @@ import { Box, Text } from "@chakra-ui/layout";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import { Layout } from "@components/Layout";
 import { yupResolver } from "@hookform/resolvers/yup";
-import clsx from "clsx";
 import dynamic from "next/dynamic";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { TiDocumentText, TiEdit } from "react-icons/ti";
 import * as yup from "yup";
+
+const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 export default function Submit() {
   const schema = yup.object().shape({
@@ -82,8 +86,3 @@ export default function Submit() {
     </Layout>
   );
 }
-
-const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
-  ssr: false,
-  loading: () => <p>Loading...</p>,
-});

@@ -1,10 +1,9 @@
-import clsx from "clsx";
 import Document, {
-  Html,
+  DocumentContext,
   Head,
+  Html,
   Main,
   NextScript,
-  DocumentContext,
 } from "next/document";
 
 class MyDocument extends Document {
@@ -41,7 +40,7 @@ class MyDocument extends Document {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3ECBDB" />
         <meta name="msapplication-TileColor" content="#3ECBDB" />
         <meta name="theme-color" content="#3ECBDB" />
-        <body className={clsx("bg-gray-100")}>
+        <body>
           <Main />
           <NextScript />
         </body>

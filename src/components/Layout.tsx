@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { Box } from "@chakra-ui/layout";
 import React from "react";
 import { Header } from "./Header";
 import { Sidenav } from "./Sidenav";
@@ -11,7 +11,9 @@ export const Layout = ({ children }: LayoutProps) => (
   <React.Fragment>
     <Header />
     <Sidenav />
-    <main className={clsx("p-6", "ml-64", "mt-16")}>{children}</main>
+    <Box as="main" p={6} ml={64} mt={16}>
+      {children}
+    </Box>
     <footer></footer>
   </React.Fragment>
 );

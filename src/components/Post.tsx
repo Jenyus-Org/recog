@@ -47,7 +47,7 @@ export const Post = ({ post }: PostProps) => {
           </div>
         </div>
       </div>
-      <div className={clsx("my-5") }>
+      <div className={clsx("my-5")}>
         <ReactMarkdown># Hello. *world*!</ReactMarkdown>
       </div>
       <div

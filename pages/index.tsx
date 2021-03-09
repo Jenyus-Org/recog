@@ -2,13 +2,12 @@ import { gql, useQuery } from "@apollo/client";
 import {
   Button,
   Center,
-  Flex,
   Grid,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
-  Select,
+  Text,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
@@ -16,8 +15,6 @@ import { Layout } from "@components/Layout";
 import { PostCard } from "@components/PostCard";
 import { PostCardSkeleton } from "@components/PostCardSkeleton";
 import { Post as PostModel } from "@models/Post";
-import { Dropdown } from "@ui/Dropdown";
-import clsx from "clsx";
 import React from "react";
 import { BiChevronDown, BiStats } from "react-icons/bi";
 
@@ -45,7 +42,9 @@ export default function Home() {
                     <span>Sort</span>
                   </WrapItem>
                   <WrapItem>
-                    <BiStats className={clsx("mx-3", "text-3xl")} />
+                    <Text mx={3} fontSize="3xl">
+                      <BiStats />
+                    </Text>
                   </WrapItem>
                   <WrapItem>
                     <Menu>
@@ -124,7 +123,9 @@ export default function Home() {
                   <span>Sort</span>
                 </WrapItem>
                 <WrapItem>
-                  <BiStats className={clsx("mx-3", "text-3xl")} />
+                  <Text mx={3} fontSize="3xl">
+                    <BiStats />
+                  </Text>
                 </WrapItem>
                 <WrapItem>
                   <Menu>
