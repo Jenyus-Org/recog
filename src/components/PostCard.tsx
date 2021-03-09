@@ -1,6 +1,5 @@
 import { Box, Button, Flex, Grid, Text } from "@chakra-ui/react";
 import { Post as PostModel } from "@models/Post";
-import clsx from "clsx";
 import React from "react";
 import { BsArrowDownShort, BsArrowUpShort } from "react-icons/bs";
 
@@ -13,20 +12,21 @@ export const PostCard = ({ post }: PostProps) => {
     <Flex
       backgroundColor="white"
       w="full"
+      flexWrap="wrap"
       justify="items"
       borderRadius="md"
       borderWidth={2}
       borderColor="gray.200"
       p={4}>
       <Grid gap={4} mr={4} px={4}>
-        <Button variant="upvote-button">
+        <Button variant="upvote-button" fontSize="3xl">
           <BsArrowUpShort />
         </Button>
-        <Button variant="upvote-button">
+        <Button variant="upvote-button" fontSize="3xl">
           <BsArrowDownShort />
         </Button>
       </Grid>
-      <Box flexGrow={1}>
+      <Box flexGrow={1} flexShrink={1}>
         <Box fontWeight="bold" fontSize="lg">
           <Text>{post.title}</Text>
         </Box>
@@ -34,7 +34,12 @@ export const PostCard = ({ post }: PostProps) => {
           <Text>{post.body}</Text>
         </Box>
       </Box>
-      <Flex flexGrow={1} borderTop="1px gray.100" pt={2} mt={4}>
+      <Flex
+        flexBasis="100%"
+        borderTopWidth="1px"
+        borderTopColor="gray.100"
+        pt={2}
+        mt={4}>
         <Text>Footer</Text>
       </Flex>
     </Flex>
