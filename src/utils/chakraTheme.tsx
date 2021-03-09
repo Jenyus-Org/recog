@@ -62,6 +62,14 @@ const fonts = {
   heading: "Comfortaa, Georgia, serif",
 };
 
-const customTheme: ThemeOverride = { colors, fonts, components };
+const styles = {
+  global: {
+    body: {
+      bg: "gray.100",
+    },
+  },
+};
+
+const customTheme: ThemeOverride = { colors, fonts, components, styles };
 
 export const theme = extendTheme(customTheme);
