@@ -6,8 +6,6 @@ import { BsBellFill } from "react-icons/bs";
 import { HiOutlineChatAlt } from "react-icons/hi";
 
 export const Header = () => {
-  const [searchFocused, setSearchFocused] = React.useState(false);
-
   return (
     <Flex
       as="header"
@@ -21,15 +19,14 @@ export const Header = () => {
       left={0}
       sx={{ zIndex: 40 }}
       shadow="sm">
-      <Box w={64} mr={12} />
+      <Box w={64} flexShrink={0} />
       <Spacer />
       <Input
         bgColor="gray.200"
         placeholder="Search..."
         mr={4}
-        width={searchFocused ? "full" : "xs"}
-        onFocus={() => setSearchFocused(true)}
-        onBlur={() => setSearchFocused(false)}
+        width="xs"
+        sx={{ _focus: { width: "full" } }}
       />
       <NextLink href="/chat" passHref>
         <Link p={2} display="flex" alignItems="center" fontSize="3xl">
