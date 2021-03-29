@@ -11,7 +11,7 @@ import { Layout } from "@components/Layout";
 import { yupResolver } from "@hookform/resolvers/yup";
 import dynamic from "next/dynamic";
 import React from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { TiDocumentText, TiEdit } from "react-icons/ti";
 import * as yup from "yup";
 
@@ -23,16 +23,17 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
 export default function Submit() {
   const schema = yup.object().shape({
     title: yup.string().required(),
+    body: yup.string().required(),
   });
-  const { register, handleSubmit, errors } = useForm({
+  const { register, handleSubmit, errors, control, watch } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const [text, setText] = React.useState("");
-
   const onSubmit = (data: any) => {
-    console.log({ ...data, text });
+    console.log({ ...data });
   };
+
+  const body = watch("body");
 
   return (
     <Layout>
@@ -66,12 +67,22 @@ export default function Submit() {
           </TabList>
           <TabPanels>
             <TabPanel>
-              <QuillNoSSRWrapper onChange={setText} value={text} />
+              <Controller
+                control={control}
+                name="body"
+                render={({ onChange, onBlur, value }) => (
+                  <QuillNoSSRWrapper
+                    onChange={onChange}
+                    value={value}
+                    onBlur={onBlur}
+                  />
+                )}
+              />
             </TabPanel>
             <TabPanel>
               <Box p={4}>
                 <div
-                  dangerouslySetInnerHTML={{ __html: text }}
+                  dangerouslySetInnerHTML={{ __html: body }}
                   style={{ overflowWrap: "break-word" }}
                 />
               </Box>
