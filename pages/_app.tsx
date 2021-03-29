@@ -4,7 +4,7 @@ import { theme } from "@utils/chakraTheme";
 import "highlight.js/styles/atom-one-dark.css";
 import { AppProps } from "next/app";
 import "quill/dist/quill.snow.css";
-import { useApollo } from "src/lib/apolloClient";
+import { useApollo } from "@lib/apolloClient";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {

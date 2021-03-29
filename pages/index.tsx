@@ -7,16 +7,22 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
   Text,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
 import { Layout } from "@components/Layout";
 import { PostCard } from "@components/PostCard";
-import { PostCardSkeleton } from "@components/PostCardSkeleton";
 import { Post as PostModel } from "@models/Post";
 import React from "react";
 import { BiChevronDown, BiStats } from "react-icons/bi";
+import ReactMarkdown from "react-markdown";
 
 export default function Home() {
   const ALL_POSTS_QUERY = gql`
@@ -30,71 +36,10 @@ export default function Home() {
   `;
   const { loading, error, data } = useQuery(ALL_POSTS_QUERY);
 
+  const [showPost, setShowPost] = React.useState(true);
+
   if (loading) {
-    return (
-      <div>
-        <Layout>
-          <Wrap mb="10" mx="auto" align="center">
-            <WrapItem>
-              <Center>
-                <Wrap mx="6" align="center">
-                  <WrapItem>
-                    <span>Sort</span>
-                  </WrapItem>
-                  <WrapItem>
-                    <Text mx={3} fontSize="3xl">
-                      <BiStats />
-                    </Text>
-                  </WrapItem>
-                  <WrapItem>
-                    <Menu>
-                      <MenuButton
-                        as={Button}
-                        variant="menu-button"
-                        rightIcon={<BiChevronDown />}>
-                        Sort
-                      </MenuButton>
-                      <MenuList>
-                        <MenuItem>Download</MenuItem>
-                        <MenuItem>Create & Copy</MenuItem>
-                        <MenuItem>Mark as Draft</MenuItem>
-                      </MenuList>
-                    </Menu>
-                  </WrapItem>
-                </Wrap>
-              </Center>
-              <Center>
-                <Wrap align="center">
-                  <WrapItem>
-                    <span>Flair</span>
-                  </WrapItem>
-                  <WrapItem>
-                    <Menu>
-                      <MenuButton
-                        as={Button}
-                        variant="menu-button"
-                        rightIcon={<BiChevronDown />}>
-                        Flair
-                      </MenuButton>
-                      <MenuList>
-                        <MenuItem>Download</MenuItem>
-                        <MenuItem>Create & Copy</MenuItem>
-                        <MenuItem>Mark as Draft</MenuItem>
-                      </MenuList>
-                    </Menu>
-                  </WrapItem>
-                </Wrap>
-              </Center>
-            </WrapItem>
-          </Wrap>
-          <Grid ml="4" mr="6" gap={4}>
-            {[...Array(10)].map((_, val) => (
-              <PostCardSkeleton key={val} />
-            ))}
-          </Grid>
-        </Layout>
-      </div>
-    );
+    return <Text>Loading...</Text>;
   } else if (error) {
     return (
       <div>

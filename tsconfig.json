@@ -32,6 +32,7 @@
       "@utils/*": ["./src/utils/*"],
       "@app/*": ["./src/app/*"],
       "@assets/*": ["./src/assets/*"],
+      "@lib/*": ["./src/lib/*"],
       "@styles/*": ["./styles/*"]
     }
   },
