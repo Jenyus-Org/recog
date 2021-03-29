@@ -1,11 +1,10 @@
 import React from "react";
 import { Post as PostModel } from "@models/Post";
-import clsx from "clsx";
-import { Button } from "@ui/Button";
 import { BsArrowDownShort, BsArrowUpShort } from "react-icons/bs";
 import { BiShareAlt } from "react-icons/bi";
 import { GoCommentDiscussion } from "react-icons/go";
 import ReactMarkdown from "react-markdown";
+import { Box, Flex, Grid, Button, Text } from "@chakra-ui/react";
 
 interface PostProps {
   post: PostModel;
@@ -13,73 +12,69 @@ interface PostProps {
 
 export const Post = ({ post }: PostProps) => {
   return (
-    <div className={clsx("ml-4", "mr-6")}>
-      <div className={clsx("flex")}>
-        <div className={clsx("grid", "gap-4", "text-center", "mx-2")}>
-          <Button pill>
+    <Box ml={4} mr={6}>
+      <Flex>
+        <Grid gap={4} mx={2} textAlign="center">
+          <Button variant="upvote-button" fontSize="3xl">
             <BsArrowUpShort />
           </Button>
-          <span>{post.upvotes}</span>
-          <Button pill>
+          <Text>{post.upvotes}</Text>
+          <Button variant="upvote-button" fontSize="3xl">
             <BsArrowDownShort />
           </Button>
-        </div>
-        <div className={clsx("grid", "gap-3", "mx-2")}>
-          <h1 className={clsx("text-3xl")}>{post.title}</h1>
-          <span className={clsx("text-gray-400")}>{post.date}</span>
-          <div className={clsx("flex")}>
-            {post.tags.map((tag) => (
-              <span
+        </Grid>
+        <Grid gap={3} mx={2}>
+          <Box fontWeight="bold" fontSize="lg">
+            <Text>{post.title}</Text>
+          </Box>
+          <Box>
+            <Text>{post.date}</Text>
+          </Box>
+          {post.tags.map((tag) => (
+            <Flex alignItems="center">
+              <Text
                 key={tag.id}
-                className={clsx(
-                  `bg-${tag.colour}-100`,
-                  "px-2",
-                  "mr-2",
-                  "text-center",
-                  "rounded-full",
-                  "text-xs",
-                  "flex",
-                  "items-center",
-                )}>
+                px={2}
+                mr={2}
+                textAlign="center"
+                borderRadius="full"
+                fontSize="xs"
+                backgroundColor={`${tag.colour}`}>
                 {tag.name}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-      <div className={clsx("my-5")}>
-        <ReactMarkdown># Hello. *world*!</ReactMarkdown>
-      </div>
-      <div
-        className={clsx(
-          "flex",
-          "justify-between",
-          "my-4",
-          "border-b-2",
-          "text-sm",
-        )}>
-        <div className={clsx("flex", "items-center", "pr-4")}>
-          <div
-            className={clsx(
-              "w-5",
-              "rounded-full",
-              "h-5",
-              "bg-blue-100",
-              "mr-2",
-              "my-2",
-            )}></div>
-          <span>Posted by {post.author}</span>
-        </div>
-        <div className={clsx("flex", "items-center")}>
-          <div className={clsx("text-lg")}>
+              </Text>
+            </Flex>
+          ))}
+        </Grid>
+      </Flex>
+      <Box my={5}>
+        <ReactMarkdown># Hello. *World*!</ReactMarkdown>
+      </Box>
+      <Flex
+        justify="between"
+        alignItems="center"
+        my={4}
+        borderBottomWidth={2}
+        fontSize="sm">
+        <Flex alignItems="center" pr={4}>
+          <Box
+            w={5}
+            borderRadius="full"
+            h={5}
+            backgroundColor="blue.100"
+            mr={2}
+            my={2}></Box>
+          <Text>Posted by {post.author}</Text>
+        </Flex>
+        <Flex align-items="center">
+          <Box fontSize="lg">
             <GoCommentDiscussion />
-          </div>
-          <span className={clsx("px-2")}>{post.comments.length}</span>
-          <div className={clsx("px-2", "text-lg")}>
+          </Box>
+          <Text px={2}>{post.comments.length}</Text>
+          <Box px={2} fontSize="lg">
             <BiShareAlt />
-          </div>
-        </div>
-      </div>
-    </div>
+          </Box>
+        </Flex>
+      </Flex>
+    </Box>
   );
 };
