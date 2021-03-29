@@ -49,67 +49,65 @@ export default function Home() {
   const { posts } = data;
 
   return (
-    <div>
-      <Layout>
-        <Wrap mb="10" mx="auto" align="center">
-          <WrapItem>
-            <Center>
-              <Wrap mx="6" align="center">
-                <WrapItem>
-                  <span>Sort</span>
-                </WrapItem>
-                <WrapItem>
-                  <Text mx={3} fontSize="3xl">
-                    <BiStats />
-                  </Text>
-                </WrapItem>
-                <WrapItem>
-                  <Menu>
-                    <MenuButton
-                      as={Button}
-                      variant="menu-button"
-                      rightIcon={<BiChevronDown />}>
-                      Sort
-                    </MenuButton>
-                    <MenuList>
-                      <MenuItem>Download</MenuItem>
-                      <MenuItem>Create & Copy</MenuItem>
-                      <MenuItem>Mark as Draft</MenuItem>
-                    </MenuList>
-                  </Menu>
-                </WrapItem>
-              </Wrap>
-            </Center>
-            <Center>
-              <Wrap align="center">
-                <WrapItem>
-                  <span>Flair</span>
-                </WrapItem>
-                <WrapItem>
-                  <Menu>
-                    <MenuButton
-                      as={Button}
-                      variant="menu-button"
-                      rightIcon={<BiChevronDown />}>
-                      Flair
-                    </MenuButton>
-                    <MenuList>
-                      <MenuItem>Download</MenuItem>
-                      <MenuItem>Create & Copy</MenuItem>
-                      <MenuItem>Mark as Draft</MenuItem>
-                    </MenuList>
-                  </Menu>
-                </WrapItem>
-              </Wrap>
-            </Center>
-          </WrapItem>
-        </Wrap>
-        <Grid ml="4" mr="6" gap={4}>
-          {posts.map((post: PostModel) => (
-            <PostCard post={post} key={post.id} />
-          ))}
-        </Grid>
-      </Layout>
-    </div>
+    <Layout>
+      <Wrap mb="10" mx="auto" align="center">
+        <WrapItem>
+          <Center>
+            <Wrap mx="6" align="center">
+              <WrapItem>
+                <span>Sort</span>
+              </WrapItem>
+              <WrapItem>
+                <Text mx={3} fontSize="3xl">
+                  <BiStats />
+                </Text>
+              </WrapItem>
+              <WrapItem>
+                <Menu>
+                  <MenuButton
+                    as={Button}
+                    variant="menu-button"
+                    rightIcon={<BiChevronDown />}>
+                    Sort
+                  </MenuButton>
+                  <MenuList>
+                    <MenuItem>Download</MenuItem>
+                    <MenuItem>Create & Copy</MenuItem>
+                    <MenuItem>Mark as Draft</MenuItem>
+                  </MenuList>
+                </Menu>
+              </WrapItem>
+            </Wrap>
+          </Center>
+          <Center>
+            <Wrap align="center">
+              <WrapItem>
+                <span>Flair</span>
+              </WrapItem>
+              <WrapItem>
+                <Menu>
+                  <MenuButton
+                    as={Button}
+                    variant="menu-button"
+                    rightIcon={<BiChevronDown />}>
+                    Flair
+                  </MenuButton>
+                  <MenuList>
+                    <MenuItem>Download</MenuItem>
+                    <MenuItem>Create & Copy</MenuItem>
+                    <MenuItem>Mark as Draft</MenuItem>
+                  </MenuList>
+                </Menu>
+              </WrapItem>
+            </Wrap>
+          </Center>
+        </WrapItem>
+      </Wrap>
+      <Grid ml="4" mr="6" gap={4}>
+        {posts.map((post: PostModel) => (
+          <PostCard post={post} key={post.id} />
+        ))}
+      </Grid>
+    </Layout>
   );
 }
