@@ -6,14 +6,16 @@ import {
   ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/modal";
+import { Post as PostModel } from "@models/Post";
 import ReactMarkdown from "react-markdown";
 
 interface PostModalProps {
   isOpen: boolean;
   onClose: () => void;
+  post: PostModel;
 }
 
-export const PostModal = ({ isOpen, onClose }: PostModalProps) => {
+export const PostModal = ({ isOpen, onClose, post }: PostModalProps) => {
   return (
     <Modal
       isOpen={isOpen}
@@ -22,15 +24,13 @@ export const PostModal = ({ isOpen, onClose }: PostModalProps) => {
       scrollBehavior="outside"
       size="6xl">
       <ModalOverlay />
-      {((post) => (
-        <ModalContent>
-          <ModalHeader>{post.title}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <ReactMarkdown>{post.body + "# Hello. *world*!"}</ReactMarkdown>
-          </ModalBody>
-        </ModalContent>
-      ))(posts[0])}
+      <ModalContent>
+        <ModalHeader>{post.title}</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <ReactMarkdown>{post.body + "# Hello. *world*!"}</ReactMarkdown>
+        </ModalBody>
+      </ModalContent>
     </Modal>
   );
 };
