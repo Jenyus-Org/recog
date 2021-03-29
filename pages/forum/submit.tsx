@@ -30,7 +30,7 @@ export default function Submit() {
   });
 
   const onSubmit = (data: any) => {
-    console.log({ ...data });
+    console.log(data);
   };
 
   const body = watch("body");
