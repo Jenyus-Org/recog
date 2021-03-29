@@ -1,4 +1,5 @@
 import { extendTheme, ThemeComponents, ThemeOverride } from "@chakra-ui/react";
+import { getColor } from "@chakra-ui/theme-tools";
 
 const colors = {
   primary: {
@@ -53,6 +54,11 @@ const components: Partial<ThemeComponents> = {
   Input: {
     baseStyle: {
       _focus: { borderColor: "none", boxShadow: "none" },
+    },
+  },
+  Link: {
+    baseStyle: {
+      color: (props) => getColor(props, props.colorScheme),
     },
   },
 };
