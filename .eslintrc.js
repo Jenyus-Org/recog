@@ -31,7 +31,7 @@ module.exports = {
     ],
     "react/react-in-jsx-scope": "off",
     "jsx-a11y/anchor-is-valid": [
-      "error",
+      "off",
       {
         components: ["Link"],
         specialLink: ["hrefLeft", "hrefRight"],
@@ -41,7 +41,7 @@ module.exports = {
     // Why would you want unused vars?
     "@typescript-eslint/no-unused-vars": ["error"],
     // I suggest this setting for requiring return types on functions only where useful
-    "@typescript-eslint/explicit-function-return-type": [
+    "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "prettier/prettier": ["error", {}, { usePrettierrc: true }],
   },

@@ -1,5 +1,5 @@
 import hljs from "highlight.js";
-import React from "react";
+import * as React from "react";
 
 interface CodeProps extends React.HTMLProps<HTMLPreElement> {}
 
