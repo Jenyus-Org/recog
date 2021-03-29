@@ -7,12 +7,6 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
   Text,
   Wrap,
   WrapItem,
@@ -22,7 +16,6 @@ import { PostCard } from "@components/PostCard";
 import { Post as PostModel } from "@models/Post";
 import React from "react";
 import { BiChevronDown, BiStats } from "react-icons/bi";
-import ReactMarkdown from "react-markdown";
 
 export default function Home() {
   const ALL_POSTS_QUERY = gql`
@@ -35,8 +28,6 @@ export default function Home() {
     }
   `;
   const { loading, error, data } = useQuery(ALL_POSTS_QUERY);
-
-  const [showPost, setShowPost] = React.useState(true);
 
   if (loading) {
     return <Text>Loading...</Text>;
