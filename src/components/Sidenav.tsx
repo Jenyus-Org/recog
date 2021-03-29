@@ -8,6 +8,7 @@ import { FiSettings } from "react-icons/fi";
 import { GoCommentDiscussion } from "react-icons/go";
 import { IoMdLogOut, IoMdLogIn } from "react-icons/io";
 import { useAuthenticatedUser } from "../hookes/useAuthenticatedUser";
+import { useJwt } from "../hookes/useJwt";
 
 interface NavLinkProps {
   to: string;
@@ -31,7 +32,8 @@ const NavLink = ({ to, children, icon }: NavLinkProps) => (
 );
 
 export const Sidenav = () => {
-  const [user] = useAuthenticatedUser();
+  const [user, setUser] = useAuthenticatedUser();
+  const { setAccessToken, setRefreshToken } = useJwt();
 
   return (
     <Flex
@@ -127,11 +129,17 @@ export const Sidenav = () => {
               <FiSettings />
             </Link>
           </NextLink>
-          <NextLink href="/logout" passHref>
-            <Link fontSize="3xl">
-              <IoMdLogOut />
-            </Link>
-          </NextLink>
+          <Button
+            fontSize="3xl"
+            variant="link"
+            colorScheme="black"
+            onClick={() => {
+              setUser(null);
+              setAccessToken("");
+              setRefreshToken("");
+            }}>
+            <IoMdLogOut />
+          </Button>
         </Flex>
       ) : (
         <Flex align="center" px={4} py={4} w="full">
