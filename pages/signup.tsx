@@ -1,4 +1,5 @@
 import React from "react";
+import { gql, useApolloClient } from "@apollo/client";
 import { Layout } from "@components/Layout";
 import {
   Box,
@@ -16,19 +17,57 @@ import { useForm } from "react-hook-form";
 import { GiOctopus } from "react-icons/gi";
 import NextLink from "next/link";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useAuthenticatedUser } from "../src/hookes/useAuthenticatedUser";
 import * as yup from "yup";
+import { useRouter } from "next/dist/client/router";
+import { useJwt } from "../src/hookes/useJwt";
 
 export default function SignUp() {
+  const client = useApolloClient();
+  const [, setUser] = useAuthenticatedUser();
+  const { setAccessToken, setRefreshToken } = useJwt();
+  const router = useRouter();
   const schema = yup.object().shape({
     username: yup.string().required(),
     password: yup.string().required(),
     password_confirmation: yup.string().required(),
   });
-  const { register, handleSubmit, errors } = useForm({
+  const { register, handleSubmit, errors, setError } = useForm({
     resolver: yupResolver(schema),
   });
   const onSubmit = async (credentials: any) => {
-    console.log("submit", credentials);
+    try {
+      const {
+        data: { register },
+      } = await client.mutate({
+        mutation: gql`
+          mutation($input: RegisterUserInput!) {
+            register(input: $input) {
+              user {
+                id
+                username
+                firstName
+                lastName
+              }
+              accessToken
+              refreshToken
+            }
+          }
+        `,
+        variables: {
+          input: {
+            username: credentials!.username,
+            password: credentials!.password,
+          },
+        },
+      });
+      setUser(register.user);
+      setAccessToken(register.accessToken);
+      setRefreshToken(register.refreshToken);
+      router.push("/");
+    } catch (error) {
+      setError("password", { message: error.message, type: "validate" });
+    }
   };
   return (
     <Layout>
