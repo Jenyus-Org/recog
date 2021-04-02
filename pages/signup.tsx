@@ -76,7 +76,7 @@ export default function SignUp() {
       setRefreshToken(register.refreshToken);
       router.push("/");
     } catch (error) {
-      setError("password", { message: error.message, type: "validate" });
+      setError("username", { message: error.message, type: "validate" });
     }
   };
   return (
