@@ -79,6 +79,7 @@ export default function SignUp() {
       setError("username", { message: error.message, type: "validate" });
     }
   };
+
   return (
     <Layout>
       <Box
