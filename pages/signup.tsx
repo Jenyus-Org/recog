@@ -27,15 +27,18 @@ export default function SignUp() {
   const [, setUser] = useAuthenticatedUser();
   const { setAccessToken, setRefreshToken } = useJwt();
   const router = useRouter();
+
   const schema = yup.object().shape({
     username: yup.string().required(),
     password: yup.string().required(),
     password_confirmation: yup.string().required(),
   });
+
   const { register, handleSubmit, errors, setError } = useForm({
     resolver: yupResolver(schema),
   });
   const onSubmit = async (credentials: any) => {
+
     try {
       const {
         data: { register },
