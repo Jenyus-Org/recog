@@ -42,6 +42,7 @@ export default function SignUp() {
 
   const { register, handleSubmit, errors, setError } = useForm({
     resolver: yupResolver(schema),
+    mode: "onTouched",
   });
   const onSubmit = async (credentials: any) => {
 
