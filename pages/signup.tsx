@@ -29,9 +29,15 @@ export default function SignUp() {
   const router = useRouter();
 
   const schema = yup.object().shape({
-    username: yup.string().required(),
-    password: yup.string().required(),
-    password_confirmation: yup.string().required(),
+    username: yup.string().required("Username is required"),
+    password: yup
+      .string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+    passwordConfirmation: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Passwords must match")
+      .required("Password confirmation is required"),
   });
 
   const { register, handleSubmit, errors, setError } = useForm({
