@@ -44,8 +44,8 @@ export default function SignUp() {
     resolver: yupResolver(schema),
     mode: "onTouched",
   });
-  const onSubmit = async (credentials: any) => {
 
+  const onSubmit = async ({ username, password }: any) => {
     try {
       const {
         data: { register },
@@ -66,8 +66,8 @@ export default function SignUp() {
         `,
         variables: {
           input: {
-            username: credentials!.username,
-            password: credentials!.password,
+            username,
+            password,
           },
         },
       });
