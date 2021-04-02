@@ -111,16 +111,18 @@ export default function SignUp() {
               </FormControl>
               <br />
               <FormControl
-                id="password_confirmation"
-                isInvalid={!!errors.password}
+                id="passwordConfirmation"
+                isInvalid={!!errors.passwordConfirmation}
                 isRequired>
                 <FormLabel>Password Confirmation</FormLabel>
                 <Input
                   ref={register}
-                  name="password_confirmation"
+                  name="passwordConfirmation"
                   type="password"
                 />
-                <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
+                <FormErrorMessage>
+                  {errors.passwordConfirmation?.message}
+                </FormErrorMessage>
               </FormControl>
               <br />
               <Button type="submit" colorScheme="primary" mr={4}>
