@@ -1,3 +1,4 @@
+import { gql, useApolloClient } from "@apollo/client";
 import { Button } from "@chakra-ui/button";
 import {
   FormControl,
@@ -9,11 +10,13 @@ import { Box, Text } from "@chakra-ui/layout";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import { Layout } from "@components/Layout";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/dist/client/router";
 import dynamic from "next/dynamic";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { TiDocumentText, TiEdit } from "react-icons/ti";
 import * as yup from "yup";
+import { useAuthenticatedUser } from "../../src/hookes/useAuthenticatedUser";
 
 const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
@@ -21,16 +24,51 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
 });
 
 export default function Submit() {
+  const client = useApolloClient();
+  const [user] = useAuthenticatedUser();
+  const router = useRouter();
+
+  React.useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, []);
+
   const schema = yup.object().shape({
     title: yup.string().required(),
     body: yup.string().required(),
   });
-  const { register, handleSubmit, errors, control, watch } = useForm({
+  const { register, handleSubmit, errors, control, watch, setError } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: any) => {
+    try {
+      const {
+        data: { createPost },
+      } = await client.mutate({
+        mutation: gql`
+          mutation {
+            createPost(input: { title: "test", body: "test" }) {
+              id
+              title
+              body
+              author {
+                id
+                username
+                firstName
+                lastName
+              }
+            }
+          }
+        `,
+        variables: { input: data },
+      });
+      console.log(createPost);
+      router.push("/");
+    } catch (error) {
+      setError("title", { message: error.message, type: "validate" });
+    }
   };
 
   const body = watch("body");
