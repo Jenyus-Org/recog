@@ -50,9 +50,7 @@ export default function Login() {
             }
           }
         `,
-        variables: {
-          input: credentials,
-        },
+        variables: { input: credentials },
       });
 
       setUser(login.user);
