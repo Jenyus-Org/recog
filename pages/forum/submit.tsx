@@ -10,13 +10,14 @@ import { Box, Text } from "@chakra-ui/layout";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import { Layout } from "@components/Layout";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/client";
 import { useRouter } from "next/dist/client/router";
 import dynamic from "next/dynamic";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { TiDocumentText, TiEdit } from "react-icons/ti";
 import * as yup from "yup";
-import { useAuthenticatedUser } from "../../src/hookes/useAuthenticatedUser";
 
 const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
@@ -25,14 +26,7 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
 
 export default function Submit() {
   const client = useApolloClient();
-  const [user] = useAuthenticatedUser();
   const router = useRouter();
-
-  React.useEffect(() => {
-    if (!user) {
-      router.push("/login");
-    }
-  }, []);
 
   const schema = yup.object().shape({
     title: yup.string().required(),
@@ -135,3 +129,20 @@ export default function Submit() {
     </Layout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/login",
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
+};

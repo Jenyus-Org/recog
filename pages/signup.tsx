@@ -1,6 +1,4 @@
-import React from "react";
 import { gql, useApolloClient } from "@apollo/client";
-import { Layout } from "@components/Layout";
 import {
   Box,
   Button,
@@ -10,22 +8,21 @@ import {
   FormLabel,
   Heading,
   Input,
-  SimpleGrid,
   Link,
+  SimpleGrid
 } from "@chakra-ui/react";
+import { Layout } from "@components/Layout";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { signIn } from "next-auth/client";
+import { useRouter } from "next/dist/client/router";
+import NextLink from "next/link";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { GiOctopus } from "react-icons/gi";
-import NextLink from "next/link";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useAuthenticatedUser } from "../src/hookes/useAuthenticatedUser";
 import * as yup from "yup";
-import { useRouter } from "next/dist/client/router";
-import { useJwt } from "../src/hookes/useJwt";
 
 export default function SignUp() {
   const client = useApolloClient();
-  const [, setUser] = useAuthenticatedUser();
-  const { setAccessToken, setRefreshToken } = useJwt();
   const router = useRouter();
 
   const schema = yup.object().shape({
@@ -47,20 +44,13 @@ export default function SignUp() {
 
   const onSubmit = async ({ username, password }: any) => {
     try {
-      const {
-        data: { register },
-      } = await client.mutate({
+      await client.mutate({
         mutation: gql`
           mutation($input: RegisterUserInput!) {
             register(input: $input) {
               user {
                 id
-                username
-                firstName
-                lastName
               }
-              accessToken
-              refreshToken
             }
           }
         `,
@@ -71,10 +61,20 @@ export default function SignUp() {
           },
         },
       });
-      setUser(register.user);
-      setAccessToken(register.accessToken);
-      setRefreshToken(register.refreshToken);
-      router.push("/");
+
+      const { ok } = await signIn("credentials", {
+        username,
+        password,
+        redirect: false,
+      });
+
+      if (ok) {
+        router.push(
+          router.query.callbackUrl == "string"
+            ? router.query.callbackUrl
+            : router.query.callbackUrl?.[0] ?? "/",
+        );
+      }
     } catch (error) {
       setError("username", { message: error.message, type: "validate" });
     }
