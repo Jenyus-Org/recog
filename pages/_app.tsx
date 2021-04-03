@@ -1,7 +1,5 @@
 import { ApolloProvider } from "@apollo/client";
 import { ChakraProvider } from "@chakra-ui/react";
-import { AuthProvider } from "@context/auth";
-import { UserProvider } from "@context/user";
 import { useApollo } from "@lib/apolloClient";
 import { theme } from "@utils/chakraTheme";
 import "highlight.js/styles/atom-one-dark.css";
@@ -15,13 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={apolloClient}>
       <ChakraProvider theme={theme}>
-        <UserProvider>
-          <AuthProvider>
-            <NextAuthProvider session={pageProps.session}>
-              <Component {...pageProps} />
-            </NextAuthProvider>
-          </AuthProvider>
-        </UserProvider>
+        <NextAuthProvider session={pageProps.session}>
+          <Component {...pageProps} />
+        </NextAuthProvider>
       </ChakraProvider>
     </ApolloProvider>
   );
