@@ -46,5 +46,9 @@ module.exports = {
     "prettier/prettier": ["error", {}, { usePrettierrc: true }],
     camelcase: ["error"],
   },
+  globals: {
+    localStorage: true,
+    fetch: true,
+    window: true,
   },
 };
