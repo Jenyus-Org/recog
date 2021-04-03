@@ -9,7 +9,7 @@ import {
   Heading,
   Input,
   Link,
-  SimpleGrid,
+  SimpleGrid
 } from "@chakra-ui/react";
 import { Layout } from "@components/Layout";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -20,13 +20,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { GiOctopus } from "react-icons/gi";
 import * as yup from "yup";
-import { useAuthenticatedUser } from "../src/hookes/useAuthenticatedUser";
-import { useJwt } from "../src/hookes/useJwt";
 
 export default function SignUp() {
   const client = useApolloClient();
-  const [, setUser] = useAuthenticatedUser();
-  const { setAccessToken, setRefreshToken } = useJwt();
   const router = useRouter();
 
   const schema = yup.object().shape({
