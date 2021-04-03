@@ -1,4 +1,3 @@
-import { gql, useApolloClient } from "@apollo/client";
 import { Button } from "@chakra-ui/button";
 import {
   FormControl,
@@ -9,18 +8,14 @@ import { Input } from "@chakra-ui/input";
 import { Box, Center, Heading, Link, SimpleGrid } from "@chakra-ui/layout";
 import { Layout } from "@components/Layout";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { signIn } from "next-auth/client";
 import { useRouter } from "next/dist/client/router";
 import NextLink from "next/link";
 import { useForm } from "react-hook-form";
 import { GiOctopus } from "react-icons/gi";
 import * as yup from "yup";
-import { useAuthenticatedUser } from "../src/hookes/useAuthenticatedUser";
-import { useJwt } from "../src/hookes/useJwt";
 
 export default function Login() {
-  const client = useApolloClient();
-  const [, setUser] = useAuthenticatedUser();
-  const { setAccessToken, setRefreshToken } = useJwt();
   const router = useRouter();
 
   const schema = yup.object().shape({
@@ -31,34 +26,22 @@ export default function Login() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (credentials: any) => {
-    try {
-      const {
-        data: { login },
-      } = await client.mutate({
-        mutation: gql`
-          mutation($input: LoginUserInput!) {
-            login(input: $input) {
-              user {
-                id
-                username
-                firstName
-                lastName
-              }
-              accessToken
-              refreshToken
-            }
-          }
-        `,
-        variables: { input: credentials },
-      });
+  const onSubmit = async ({ username, password }: any) => {
+    const { error, ok } = await signIn("credentials", {
+      username,
+      password,
+      redirect: false,
+    });
 
-      setUser(login.user);
-      setAccessToken(login.accessToken);
-      setRefreshToken(login.refreshToken);
-      router.push("/");
-    } catch (error) {
-      setError("password", { message: error.message, type: "validate" });
+    if (ok) {
+      router.push(
+        router.query.callbackUrl == "string"
+          ? router.query.callbackUrl
+          : router.query.callbackUrl?.[0] ?? "/",
+      );
+    } else if (error) {
+      console.log(error);
+      setError("password", { message: error });
     }
   };
 
