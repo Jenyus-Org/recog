@@ -1,5 +1,6 @@
 import { Button } from "@chakra-ui/button";
 import { Divider, Flex, Heading, Link, Spacer, Text } from "@chakra-ui/layout";
+import { signOut, useSession } from "next-auth/client";
 import NextLink from "next/link";
 import React from "react";
 import { BiBriefcase, BiNotepad } from "react-icons/bi";
@@ -7,8 +8,6 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
 import { GoCommentDiscussion } from "react-icons/go";
 import { IoMdLogOut } from "react-icons/io";
-import { useAuthenticatedUser } from "../hookes/useAuthenticatedUser";
-import { useJwt } from "../hookes/useJwt";
 
 interface NavLinkProps {
   to: string;
@@ -32,8 +31,7 @@ const NavLink = ({ to, children, icon }: NavLinkProps) => (
 );
 
 export const Sidenav = () => {
-  const [user, setUser] = useAuthenticatedUser();
-  const { setAccessToken, setRefreshToken } = useJwt();
+  const [session, loading] = useSession();
 
   return (
     <Flex
@@ -71,7 +69,7 @@ export const Sidenav = () => {
                 color="white"
                 fontSize="md"
                 fontWeight="medium"
-                isDisabled={!user}
+                isDisabled={!session && !loading}
                 px={6}
                 py={3}
                 mb={4}
@@ -87,7 +85,7 @@ export const Sidenav = () => {
                 color="white"
                 fontSize="md"
                 fontWeight="medium"
-                isDisabled={!user}
+                isDisabled={!session && !loading}
                 px={6}
                 py={3}
                 sx={{ textTransform: "uppercase" }}>
@@ -119,12 +117,12 @@ export const Sidenav = () => {
       </Flex>
       <Spacer />
       <Divider />
-      {user ? (
+      {session ? (
         <Flex align="center" px={4} py={4} w="full">
           <Text fontSize="3xl" mr={2}>
             <BsFillPersonFill />
           </Text>
-          <Text fontSize="lg">{user.username}</Text>
+          <Text fontSize="lg">{session.user.username}</Text>
           <Spacer />
           <NextLink href="/profile" passHref>
             <Link fontSize="3xl" mr={2}>
@@ -135,11 +133,7 @@ export const Sidenav = () => {
             fontSize="3xl"
             variant="link"
             colorScheme="black"
-            onClick={() => {
-              setUser(null);
-              setAccessToken("");
-              setRefreshToken("");
-            }}>
+            onClick={() => signOut()}>
             <IoMdLogOut />
           </Button>
         </Flex>
