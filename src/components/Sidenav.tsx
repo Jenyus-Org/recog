@@ -6,7 +6,7 @@ import { BiBriefcase, BiNotepad } from "react-icons/bi";
 import { BsFillPersonFill } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
 import { GoCommentDiscussion } from "react-icons/go";
-import { IoMdLogOut, IoMdLogIn } from "react-icons/io";
+import { IoMdLogOut } from "react-icons/io";
 import { useAuthenticatedUser } from "../hookes/useAuthenticatedUser";
 import { useJwt } from "../hookes/useJwt";
 
@@ -71,6 +71,7 @@ export const Sidenav = () => {
                 color="white"
                 fontSize="md"
                 fontWeight="medium"
+                isDisabled={!user}
                 px={6}
                 py={3}
                 mb={4}
@@ -86,6 +87,7 @@ export const Sidenav = () => {
                 color="white"
                 fontSize="md"
                 fontWeight="medium"
+                isDisabled={!user}
                 px={6}
                 py={3}
                 sx={{ textTransform: "uppercase" }}>
