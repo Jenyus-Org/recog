@@ -54,7 +54,23 @@ export default NextAuth({
       },
     }),
   ],
-  callbacks: {},
+  callbacks: {
+    jwt: async (token, data: any) => {
+      if (data) {
+        const { accessToken, refreshToken, user } = data;
+        token.user = {
+          ...user,
+          accessToken,
+          refreshToken,
+        };
+      }
+      return token;
+    },
+    session: (session, token: any) => {
+      session.user = token.user;
+      return session;
+    },
+  },
   pages: {
     signIn: "/login",
     error: "/login",
