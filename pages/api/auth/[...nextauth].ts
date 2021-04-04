@@ -66,8 +66,12 @@ export default NextAuth({
       }
       return token;
     },
-    session: (session, token: any) => {
-      session.user = token.user;
+    // @ts-ignore
+    session: (session: WithAdditionalParams<Session>, token: JWT) => {
+      // don't include refresh token for security purposes
+      session.user = token.user as WithAdditionalParams<User>;
+      session.accessToken = token.accessToken as string;
+
       return session;
     },
   },

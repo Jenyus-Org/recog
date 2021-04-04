@@ -16,8 +16,8 @@ function createApolloClient() {
     return {
       headers: {
         ...headers,
-        authorization: session?.user.accessToken
-          ? `Bearer ${session?.user.accessToken}`
+        authorization: session?.accessToken
+          ? `Bearer ${session?.accessToken}`
           : null,
       },
     };
