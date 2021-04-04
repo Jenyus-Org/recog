@@ -1,7 +1,7 @@
-import { useMemo } from "react";
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { getSession } from "next-auth/client";
+import { getSession, signIn } from "next-auth/client";
+import { useMemo } from "react";
 
 let apolloClient: ApolloClient<any>;
 
@@ -11,13 +11,17 @@ function createApolloClient() {
   });
 
   const authLink = setContext(async (_, { headers }) => {
-    const session = await getSession();
+    const session = (await getSession()) as any;
+
+    if (session?.error === "RefreshAccessTokenError") {
+      signIn(); // Force sign in to hopefully resolve error
+    }
 
     return {
       headers: {
         ...headers,
-        authorization: session?.user.accessToken
-          ? `Bearer ${session?.user.accessToken}`
+        authorization: session?.accessToken
+          ? `Bearer ${session?.accessToken}`
           : null,
       },
     };
