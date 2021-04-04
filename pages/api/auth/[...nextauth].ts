@@ -1,7 +1,10 @@
 import { gql } from "@apollo/client";
 import { initializeApollo } from "@lib/apolloClient";
-import NextAuth from "next-auth";
+import { refreshAccessToken } from "@lib/refreshAccessToken";
+import NextAuth, { Session, User } from "next-auth";
+import { JWT } from "next-auth/jwt";
 import Providers from "next-auth/providers";
+import { WithAdditionalParams } from "next-auth/_utils";
 
 export default NextAuth({
   providers: [
@@ -35,6 +38,7 @@ export default NextAuth({
                     lastName
                   }
                   accessToken
+                  accessTokenExpiresAt
                   refreshToken
                 }
               }
@@ -55,22 +59,36 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    jwt: async (token, data: any) => {
-      if (data) {
-        const { accessToken, refreshToken, user } = data;
-        token.user = {
-          ...user,
+    jwt: async (token: any, user: any) => {
+      // check if initial sign-in request
+      if (user) {
+        const {
           accessToken,
+          accessTokenExpiresAt,
           refreshToken,
+          user: u,
+        } = user;
+
+        return {
+          accessToken,
+          accessTokenExpiresAt,
+          refreshToken,
+          user: u,
         };
       }
-      return token;
+
+      if (Date.now() < new Date(token.accessTokenExpiresAt).getTime()) {
+        return token;
+      }
+
+      return await refreshAccessToken(token);
     },
     // @ts-ignore
     session: (session: WithAdditionalParams<Session>, token: JWT) => {
       // don't include refresh token for security purposes
       session.user = token.user as WithAdditionalParams<User>;
       session.accessToken = token.accessToken as string;
+      session.error = token.error;
 
       return session;
     },
