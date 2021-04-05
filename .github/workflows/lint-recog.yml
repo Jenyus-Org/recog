@@ -16,6 +16,6 @@ jobs:
       - name: Install Node modules and lint codebase
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "14"
       - run: npm ci
       - run: npm run lint
