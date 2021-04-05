@@ -38,9 +38,7 @@ export default function Submit() {
 
   const onSubmit = async (data: any) => {
     try {
-      const {
-        data: { createPost },
-      } = await client.mutate({
+      await client.mutate({
         mutation: gql`
           mutation {
             createPost(input: { title: "test", body: "test" }) {
