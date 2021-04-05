@@ -31,9 +31,8 @@ export const Post = ({ post }: PostProps) => {
             <Text>{post.date}</Text>
           </Box>
           {post.tags.map((tag) => (
-            <Flex alignItems="center">
+            <Flex key={tag.id} alignItems="center">
               <Text
-                key={tag.id}
                 px={2}
                 mr={2}
                 textAlign="center"

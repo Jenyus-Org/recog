@@ -9,7 +9,7 @@ import {
   Heading,
   Input,
   Link,
-  SimpleGrid
+  SimpleGrid,
 } from "@chakra-ui/react";
 import { Layout } from "@components/Layout";
 import { yupResolver } from "@hookform/resolvers/yup";

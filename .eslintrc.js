@@ -3,6 +3,7 @@ module.exports = {
   env: {
     node: true,
     es6: true,
+    browser: true,
   },
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -14,7 +15,12 @@ module.exports = {
   },
   plugins: ["@typescript-eslint", "react", "prettier"],
   ignorePatterns: ["node_modules/*", ".next/*", ".out/*", "!.prettierrc.js"], // We don't want to lint generated files nor node_modules, but we want to lint .prettierrc.js (ignored by default by eslint)
-  extends: ["eslint:recommended", "prettier", "prettier/react"],
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react",
+  ],
   rules: {
     "react/jsx-filename-extension": [1, { extensions: [".ts", ".tsx"] }],
     "import/extensions": "off",
@@ -45,10 +51,17 @@ module.exports = {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "prettier/prettier": ["error", {}, { usePrettierrc: true }],
     camelcase: ["error"],
+    "react/display-name": "off",
   },
-  globals: {
-    localStorage: true,
-    fetch: true,
-    window: true,
+  settings: {
+    react: {
+      version: "detect",
+    },
+    linkComponents: [
+      // Components used as alternatives to <a> for linking, eg. <Link to={url} />
+      "Link",
+      "NextLink",
+      { name: "NavLink", linkAttribute: "to" },
+    ],
   },
 };
