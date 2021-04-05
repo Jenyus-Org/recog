@@ -137,7 +137,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return {
       redirect: {
         permanent: false,
-        destination: "/login",
+        destination: `/login?callbackUrl=${context.resolvedUrl}`,
       },
     };
   }

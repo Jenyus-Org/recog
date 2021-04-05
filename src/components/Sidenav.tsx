@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/button";
 import { Divider, Flex, Heading, Link, Spacer, Text } from "@chakra-ui/layout";
-import { signOut, useSession } from "next-auth/client";
+import { signIn, signOut, useSession } from "next-auth/client";
 import NextLink from "next/link";
 import React from "react";
 import { BiBriefcase, BiNotepad } from "react-icons/bi";
@@ -140,20 +140,18 @@ export const Sidenav = () => {
       ) : (
         <Flex align="center" px={4} py={4} w="full">
           <Spacer />
-          <NextLink href="/login" passHref>
-            <Button
-              as="a"
-              colorScheme="primary"
-              color="white"
-              fontSize="md"
-              fontWeight="medium"
-              px={6}
-              py={3}
-              mr={3}
-              sx={{ textTransform: "uppercase" }}>
-              Login
-            </Button>
-          </NextLink>
+          <Button
+            colorScheme="primary"
+            color="white"
+            fontSize="md"
+            fontWeight="medium"
+            px={6}
+            py={3}
+            mr={3}
+            sx={{ textTransform: "uppercase" }}
+            onClick={() => signIn()}>
+            Login
+          </Button>
           <NextLink href="/signup" passHref>
             <Button
               as="a"
