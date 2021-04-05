@@ -35,7 +35,7 @@ export default function Login() {
 
     if (ok) {
       router.push(
-        router.query.callbackUrl == "string"
+        typeof router.query.callbackUrl == "string"
           ? router.query.callbackUrl
           : router.query.callbackUrl?.[0] ?? "/",
       );
