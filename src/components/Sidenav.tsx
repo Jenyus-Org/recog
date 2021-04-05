@@ -117,12 +117,12 @@ export const Sidenav = () => {
       </Flex>
       <Spacer />
       <Divider />
-      {session ? (
+      {session?.user ? (
         <Flex align="center" px={4} py={4} w="full">
           <Text fontSize="3xl" mr={2}>
             <BsFillPersonFill />
           </Text>
-          <Text fontSize="lg">{session.user.username}</Text>
+          <Text fontSize="lg">{session.user.username as string}</Text>
           <Spacer />
           <NextLink href="/profile" passHref>
             <Link fontSize="3xl" mr={2}>
