@@ -40,7 +40,6 @@ export default function Login() {
           : router.query.callbackUrl?.[0] ?? "/",
       );
     } else if (error) {
-      console.log(error);
       setError("password", { message: error });
     }
   };

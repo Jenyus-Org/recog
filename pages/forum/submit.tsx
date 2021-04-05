@@ -58,7 +58,6 @@ export default function Submit() {
         `,
         variables: { input: data },
       });
-      console.log(createPost);
       router.push("/");
     } catch (error) {
       setError("title", { message: error.message, type: "validate" });

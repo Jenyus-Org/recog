@@ -30,10 +30,7 @@ export const refreshAccessToken = async ({ refreshToken, ...token }: JWT) => {
       refreshToken,
     };
   } catch (error) {
-    console.error("Error:", error);
     return {
-      ...token,
-      refreshToken,
       error: "RefreshAccessTokenError",
     };
   }
