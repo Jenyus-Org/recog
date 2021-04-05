@@ -11,12 +11,20 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { signIn } from "next-auth/client";
 import { useRouter } from "next/dist/client/router";
 import NextLink from "next/link";
+import * as React from "react";
 import { useForm } from "react-hook-form";
 import { GiOctopus } from "react-icons/gi";
 import * as yup from "yup";
 
 export default function Login() {
   const router = useRouter();
+  const callbackUrl = React.useMemo(
+    () =>
+      typeof router.query.callbackUrl == "string"
+        ? router.query.callbackUrl
+        : router.query.callbackUrl?.[0] ?? null,
+    [router],
+  );
 
   const schema = yup.object().shape({
     username: yup.string().required(),
@@ -26,7 +34,10 @@ export default function Login() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async ({ username, password }: any) => {
+  const onSubmit = async ({
+    username,
+    password,
+  }: yup.TypeOf<typeof schema>) => {
     const { error, ok } = await signIn("credentials", {
       username,
       password,
@@ -34,11 +45,7 @@ export default function Login() {
     });
 
     if (ok) {
-      router.push(
-        typeof router.query.callbackUrl == "string"
-          ? router.query.callbackUrl
-          : router.query.callbackUrl?.[0] ?? "/",
-      );
+      router.push(callbackUrl ?? "/");
     } else if (error) {
       setError("password", { message: error });
     }
@@ -78,7 +85,11 @@ export default function Login() {
               <Button type="submit" colorScheme="primary" mr={4}>
                 Login
               </Button>
-              <NextLink href="/signup" passHref>
+              <NextLink
+                href={
+                  callbackUrl ? `/signup?callbackUrl=${callbackUrl}` : "/signup"
+                }
+                passHref>
                 <Link colorScheme="secondary">Sign Up</Link>
               </NextLink>
             </form>

@@ -24,6 +24,13 @@ import * as yup from "yup";
 export default function SignUp() {
   const client = useApolloClient();
   const router = useRouter();
+  const callbackUrl = React.useMemo(
+    () =>
+      typeof router.query.callbackUrl == "string"
+        ? router.query.callbackUrl
+        : router.query.callbackUrl?.[0] ?? null,
+    [router],
+  );
 
   const schema = yup.object().shape({
     username: yup.string().required("Username is required"),
@@ -42,7 +49,10 @@ export default function SignUp() {
     mode: "onTouched",
   });
 
-  const onSubmit = async ({ username, password }: any) => {
+  const onSubmit = async ({
+    username,
+    password,
+  }: yup.TypeOf<typeof schema>) => {
     try {
       await client.mutate({
         mutation: gql`
@@ -69,11 +79,7 @@ export default function SignUp() {
       });
 
       if (ok) {
-        router.push(
-          router.query.callbackUrl == "string"
-            ? router.query.callbackUrl
-            : router.query.callbackUrl?.[0] ?? "/",
-        );
+        router.push(callbackUrl ?? "/");
       }
     } catch (error) {
       setError("username", { message: error.message, type: "validate" });
@@ -128,7 +134,11 @@ export default function SignUp() {
               <Button type="submit" colorScheme="primary" mr={4}>
                 Register
               </Button>
-              <NextLink href="/login" passHref>
+              <NextLink
+                href={
+                  callbackUrl ? `/login?callbackUrl=${callbackUrl}` : "/login"
+                }
+                passHref>
                 <Link colorScheme="secondary">Login</Link>
               </NextLink>
             </form>
