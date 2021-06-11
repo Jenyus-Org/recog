@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "format": "prettier --write \"{src,pages}/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint \"{src,pages}/**/*.{js,jsx,ts,tsx}\" --fix",
     "codegen": "apollo client:codegen src/generated/graphql/api.d.ts --target typescript --outputFlat --useReadOnlyTypes",
     "codegen:watch": "yarn codegen --watch"
