@@ -1,10 +1,10 @@
 import { gql } from "@apollo/client";
+import { LoginUser, LoginUserVariables } from "@generated/graphql/api";
 import { initializeApollo } from "@lib/apolloClient";
 import { refreshAccessToken } from "@lib/refreshAccessToken";
 import NextAuth, { Session, User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import Providers from "next-auth/providers";
-import { WithAdditionalParams } from "next-auth/_utils";
 
 export default NextAuth({
   providers: [
@@ -25,11 +25,12 @@ export default NextAuth({
       authorize: async ({ username, password }) => {
         const apolloClient = initializeApollo();
         try {
-          const {
-            data: { login },
-          } = await apolloClient.mutate({
+          const { data } = await apolloClient.mutate<
+            LoginUser,
+            LoginUserVariables
+          >({
             mutation: gql`
-              mutation($input: LoginUserInput!) {
+              mutation LoginUser($input: LoginUserInput!) {
                 login(input: $input) {
                   user {
                     id
@@ -51,7 +52,9 @@ export default NextAuth({
             },
           });
 
-          return login;
+          if (!data) throw new Error("Data not returned!");
+
+          return data.login;
         } catch (error) {
           throw new Error(error.message);
         }
@@ -59,7 +62,7 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    jwt: async (token: any, user: any) => {
+    jwt: async (token: JWT, user: User) => {
       // check if initial sign-in request
       if (user) {
         const {
@@ -84,9 +87,9 @@ export default NextAuth({
       return await refreshAccessToken(token);
     },
     // @ts-ignore
-    session: (session: WithAdditionalParams<Session>, token: JWT) => {
+    session: (session: Session, token: JWT) => {
       // don't include refresh token for security purposes
-      session.user = token.user as WithAdditionalParams<User>;
+      session.user = token.user;
       session.accessToken = token.accessToken as string;
       session.error = token.error;
 

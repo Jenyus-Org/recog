@@ -1,3 +1,4 @@
+import { AllPosts } from "@generated/graphql/api";
 import { gql, useQuery } from "@apollo/client";
 import {
   Button,
@@ -19,7 +20,7 @@ import { BiChevronDown, BiStats } from "react-icons/bi";
 
 export default function Home() {
   const ALL_POSTS_QUERY = gql`
-    query {
+    query AllPosts {
       posts {
         id
         title
@@ -27,7 +28,7 @@ export default function Home() {
       }
     }
   `;
-  const { loading, error, data } = useQuery(ALL_POSTS_QUERY);
+  const { loading, error, data } = useQuery<AllPosts>(ALL_POSTS_QUERY);
 
   if (loading) {
     return <Text>Loading...</Text>;
@@ -42,6 +43,16 @@ export default function Home() {
         <pre>
           <code>{JSON.stringify(error, null, 2)}</code>
         </pre>
+      </div>
+    );
+  } else if (!data) {
+    return (
+      <div>
+        <p>
+          Oh no!
+          <br />
+          Data couldn't be loaded.
+        </p>
       </div>
     );
   }

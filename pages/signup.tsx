@@ -12,9 +12,10 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 import { Layout } from "@components/Layout";
+import { RegisterUser, RegisterUserVariables } from "@generated/graphql/api";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signIn } from "next-auth/client";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 import NextLink from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -32,17 +33,20 @@ export default function SignUp() {
     [router],
   );
 
-  const schema = yup.object().shape({
-    username: yup.string().required("Username is required"),
-    password: yup
-      .string()
-      .min(6, "Password must be at least 6 characters")
-      .required("Password is required"),
-    passwordConfirmation: yup
-      .string()
-      .oneOf([yup.ref("password"), null], "Passwords must match")
-      .required("Password confirmation is required"),
-  });
+  const schema = yup
+    .object()
+    .shape({
+      username: yup.string().required("Username is required"),
+      password: yup
+        .string()
+        .min(6, "Password must be at least 6 characters")
+        .required("Password is required"),
+      passwordConfirmation: yup
+        .string()
+        .oneOf([yup.ref("password"), null], "Passwords must match")
+        .required("Password confirmation is required"),
+    })
+    .required();
 
   const { register, handleSubmit, errors, setError } = useForm({
     resolver: yupResolver(schema),
@@ -54,9 +58,9 @@ export default function SignUp() {
     password,
   }: yup.TypeOf<typeof schema>) => {
     try {
-      await client.mutate({
+      await client.mutate<RegisterUser, RegisterUserVariables>({
         mutation: gql`
-          mutation($input: RegisterUserInput!) {
+          mutation RegisterUser($input: RegisterUserInput!) {
             register(input: $input) {
               user {
                 id

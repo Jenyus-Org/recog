@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint \"{src,pages}/**/*.{js,jsx,ts,tsx}\" --fix"
+    "lint": "eslint \"{src,pages}/**/*.{js,jsx,ts,tsx}\" --fix",
+    "codegen": "apollo client:codegen src/generated/graphql/api.d.ts --target typescript --outputFlat --useReadOnlyTypes",
+    "codegen:watch": "yarn codegen --watch"
   },
   "dependencies": {
     "@apollo/client": "^3.3.11",
@@ -38,6 +40,7 @@
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
+    "apollo": "^2.33.4",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^7.18.0",
     "eslint-config-airbnb": "^18.2.1",
