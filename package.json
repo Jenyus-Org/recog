@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint \"{src,pages}/**/*.{js,jsx,ts,tsx}\" --fix"
+    "lint": "eslint \"{src,pages}/**/*.{js,jsx,ts,tsx}\" --fix",
+    "codegen": "apollo client:codegen src/generated/graphql/api.d.ts --target typescript --outputFlat --useReadOnlyTypes",
+    "codegen:watch": "yarn codegen --watch"
   },
   "dependencies": {
     "@apollo/client": "^3.3.11",
