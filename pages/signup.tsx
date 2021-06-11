@@ -56,7 +56,7 @@ export default function SignUp() {
     try {
       await client.mutate({
         mutation: gql`
-          mutation($input: RegisterUserInput!) {
+          mutation RegisterUser($input: RegisterUserInput!) {
             register(input: $input) {
               user {
                 id

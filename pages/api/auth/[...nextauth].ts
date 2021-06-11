@@ -29,7 +29,7 @@ export default NextAuth({
             data: { login },
           } = await apolloClient.mutate({
             mutation: gql`
-              mutation($input: LoginUserInput!) {
+              mutation LoginUser($input: LoginUserInput!) {
                 login(input: $input) {
                   user {
                     id

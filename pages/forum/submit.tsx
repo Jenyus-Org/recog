@@ -40,7 +40,7 @@ export default function Submit() {
     try {
       await client.mutate({
         mutation: gql`
-          mutation {
+          mutation CreatePost {
             createPost(input: { title: "test", body: "test" }) {
               id
               title

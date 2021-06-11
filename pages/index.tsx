@@ -19,7 +19,7 @@ import { BiChevronDown, BiStats } from "react-icons/bi";
 
 export default function Home() {
   const ALL_POSTS_QUERY = gql`
-    query {
+    query AllPosts {
       posts {
         id
         title

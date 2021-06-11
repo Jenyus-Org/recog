@@ -10,7 +10,7 @@ export const refreshAccessToken = async ({ refreshToken, ...token }: JWT) => {
       data: { refreshToken: response },
     } = await apolloClient.mutate({
       mutation: gql`
-        mutation($input: RefreshTokenInput!) {
+        mutation RefreshToken($input: RefreshTokenInput!) {
           refreshToken(input: $input) {
             accessToken
             accessTokenExpiresAt
