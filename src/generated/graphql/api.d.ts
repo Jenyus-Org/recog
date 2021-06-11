@@ -116,14 +116,14 @@ export interface RegisterUserVariables {
 // GraphQL mutation operation: RefreshToken
 // ====================================================
 
-export interface RefreshToken_refreshToken {
+export interface RefreshToken_response {
   readonly __typename: "RefreshTokenPayload";
   readonly accessToken: string;
   readonly accessTokenExpiresAt: any;
 }
 
 export interface RefreshToken {
-  readonly refreshToken: RefreshToken_refreshToken;
+  readonly response: RefreshToken_response;
 }
 
 export interface RefreshTokenVariables {

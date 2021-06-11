@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { RefreshToken, RefreshTokenVariables } from "@generated/graphql/api";
 import { JWT } from "next-auth/jwt";
 import { initializeApollo } from "./apolloClient";
 
@@ -6,12 +7,13 @@ export const refreshAccessToken = async ({ refreshToken, ...token }: JWT) => {
   const apolloClient = initializeApollo();
 
   try {
-    const {
-      data: { refreshToken: response },
-    } = await apolloClient.mutate({
+    const { data } = await apolloClient.mutate<
+      RefreshToken,
+      RefreshTokenVariables
+    >({
       mutation: gql`
         mutation RefreshToken($input: RefreshTokenInput!) {
-          refreshToken(input: $input) {
+          response: refreshToken(input: $input) {
             accessToken
             accessTokenExpiresAt
           }
@@ -23,6 +25,14 @@ export const refreshAccessToken = async ({ refreshToken, ...token }: JWT) => {
         },
       },
     });
+
+    if (!data) {
+      return {
+        error: "RefreshAccessTokenError",
+      };
+    }
+
+    const { response } = data;
 
     return {
       ...token,

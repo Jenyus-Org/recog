@@ -9,6 +9,7 @@ import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import { Layout } from "@components/Layout";
+import { CreatePost } from "@generated/graphql/api";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/client";
@@ -38,7 +39,7 @@ export default function Submit() {
 
   const onSubmit = async (data: any) => {
     try {
-      await client.mutate({
+      await client.mutate<CreatePost>({
         mutation: gql`
           mutation CreatePost {
             createPost(input: { title: "test", body: "test" }) {
